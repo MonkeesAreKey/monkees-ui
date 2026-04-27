@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "monkees-ui",
+  "homepage": "https://github.com/MonkeesAreKey/monkees-ui",
+  "items": [
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Monkees-styled button with brutalist hard shadow.",
+      "files": [
+        {
+          "path": "registry/monkees/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}
