@@ -4,6 +4,7 @@ const variants = [
   "default",
   "outline",
   "secondary",
+  "accent",
   "ghost",
   "destructive",
   "link",
