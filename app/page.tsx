@@ -1,6 +1,44 @@
-import { Button } from "@/components/ui/button"
+"use client"
 
-const variants = [
+import { Button } from "@/components/ui/button"
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Badge } from "@/components/ui/badge"
+import { Skeleton } from "@/components/ui/skeleton"
+import {
+  Avatar,
+  AvatarImage,
+  AvatarFallback,
+} from "@/components/ui/avatar"
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog"
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuLabel,
+} from "@/components/ui/dropdown-menu"
+import { Toaster } from "@/components/ui/sonner"
+import { toast } from "sonner"
+
+const buttonVariants = [
   "default",
   "outline",
   "secondary",
@@ -10,52 +48,182 @@ const variants = [
   "link",
 ] as const
 
-const sizes = ["xs", "sm", "default", "lg"] as const
+const buttonSizes = ["xs", "sm", "default", "lg"] as const
+
+const badgeVariants = [
+  "default",
+  "secondary",
+  "accent",
+  "outline",
+  "destructive",
+] as const
+
+function Section({
+  title,
+  children,
+}: {
+  title: string
+  children: React.ReactNode
+}) {
+  return (
+    <section className="space-y-4">
+      <h2 className="text-xl font-bold uppercase tracking-wide">{title}</h2>
+      <div className="rounded-xl border-2 border-black bg-card p-6 shadow-[4px_4px_0_0_#000]">
+        {children}
+      </div>
+    </section>
+  )
+}
 
 export default function Home() {
   return (
-    <main className="mx-auto max-w-5xl px-6 py-12 space-y-12">
+    <main className="mx-auto max-w-5xl px-6 py-12 space-y-10">
+      <Toaster />
       <header className="space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight">Monkees UI</h1>
+        <h1 className="text-4xl font-black uppercase tracking-tight">
+          Monkees UI
+        </h1>
         <p className="text-muted-foreground">
-          Component showcase. Edit <code>app/page.tsx</code> to add more.
+          Brutalist component showcase. Yellow, black borders, hard shadows.
         </p>
       </header>
 
-      <section className="space-y-4">
-        <h2 className="text-xl font-semibold">Button — variants</h2>
-        <div className="flex flex-wrap gap-3">
-          {variants.map((v) => (
+      <Section title="Button — variants">
+        <div className="flex flex-wrap gap-4">
+          {buttonVariants.map((v) => (
             <Button key={v} variant={v}>
               {v}
             </Button>
           ))}
         </div>
-      </section>
+      </Section>
 
-      <section className="space-y-4">
-        <h2 className="text-xl font-semibold">Button — sizes</h2>
-        <div className="flex flex-wrap items-center gap-3">
-          {sizes.map((s) => (
+      <Section title="Button — sizes">
+        <div className="flex flex-wrap items-center gap-4">
+          {buttonSizes.map((s) => (
             <Button key={s} size={s}>
               {s}
             </Button>
           ))}
         </div>
-      </section>
+      </Section>
 
-      <section className="space-y-4">
-        <h2 className="text-xl font-semibold">Button — disabled</h2>
+      <Section title="Badge">
         <div className="flex flex-wrap gap-3">
-          <Button disabled>default</Button>
-          <Button variant="outline" disabled>
-            outline
+          {badgeVariants.map((v) => (
+            <Badge key={v} variant={v}>
+              {v}
+            </Badge>
+          ))}
+        </div>
+      </Section>
+
+      <Section title="Input + Label">
+        <div className="grid max-w-sm gap-2">
+          <Label htmlFor="wallet">Wallet address</Label>
+          <Input id="wallet" placeholder="0xMonkee..." />
+        </div>
+      </Section>
+
+      <Section title="Card">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Card>
+            <CardHeader>
+              <CardTitle>King Monkee #001</CardTitle>
+              <CardDescription>Legendary trait set</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="flex gap-2">
+                <Badge>rare</Badge>
+                <Badge variant="accent">crown</Badge>
+              </div>
+            </CardContent>
+            <CardFooter>
+              <Button size="sm">View</Button>
+            </CardFooter>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>Beach Monkee #042</CardTitle>
+              <CardDescription>Common trait set</CardDescription>
+            </CardHeader>
+            <CardContent className="text-muted-foreground">
+              No description provided.
+            </CardContent>
+          </Card>
+        </div>
+      </Section>
+
+      <Section title="Avatar">
+        <div className="flex items-center gap-4">
+          <Avatar size="sm">
+            <AvatarFallback>M1</AvatarFallback>
+          </Avatar>
+          <Avatar>
+            <AvatarImage src="/images/monkee.webp" alt="" />
+            <AvatarFallback>M2</AvatarFallback>
+          </Avatar>
+          <Avatar size="lg">
+            <AvatarFallback>M3</AvatarFallback>
+          </Avatar>
+        </div>
+      </Section>
+
+      <Section title="Dialog">
+        <Dialog>
+          <DialogTrigger render={<Button>Open dialog</Button>} />
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Confirm mint</DialogTitle>
+              <DialogDescription>
+                You are about to mint 1 Monkee for 0.05 ETH.
+              </DialogDescription>
+            </DialogHeader>
+            <DialogFooter showCloseButton>
+              <Button>Confirm</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      </Section>
+
+      <Section title="Dropdown Menu">
+        <DropdownMenu>
+          <DropdownMenuTrigger render={<Button variant="outline">Account</Button>} />
+          <DropdownMenuContent>
+            <DropdownMenuLabel>Signed in</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Profile</DropdownMenuItem>
+            <DropdownMenuItem>Settings</DropdownMenuItem>
+            <DropdownMenuItem>Sign out</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </Section>
+
+      <Section title="Toast (Sonner)">
+        <div className="flex flex-wrap gap-3">
+          <Button onClick={() => toast("Monkee minted!")}>Default</Button>
+          <Button
+            variant="accent"
+            onClick={() => toast.success("Tx confirmed")}
+          >
+            Success
           </Button>
-          <Button variant="destructive" disabled>
-            destructive
+          <Button
+            variant="destructive"
+            onClick={() => toast.error("Tx reverted")}
+          >
+            Error
           </Button>
         </div>
-      </section>
+      </Section>
+
+      <Section title="Skeleton">
+        <div className="space-y-3">
+          <Skeleton className="h-4 w-48" />
+          <Skeleton className="h-4 w-64" />
+          <Skeleton className="h-24 w-full" />
+        </div>
+      </Section>
     </main>
   )
 }

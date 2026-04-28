@@ -7,13 +7,68 @@
       "name": "button",
       "type": "registry:ui",
       "title": "Button",
-      "description": "Monkees-styled button with brutalist hard shadow.",
-      "files": [
-        {
-          "path": "registry/monkees/ui/button.tsx",
-          "type": "registry:ui"
-        }
-      ]
+      "description": "Brutalist button with hard offset shadow.",
+      "files": [{ "path": "registry/monkees/ui/button.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Card with thick border and offset shadow.",
+      "files": [{ "path": "registry/monkees/ui/card.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Input with thick border, shadow on focus.",
+      "files": [{ "path": "registry/monkees/ui/input.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "files": [{ "path": "registry/monkees/ui/label.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Badge with thick border, uppercase.",
+      "files": [{ "path": "registry/monkees/ui/badge.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "Modal dialog with brutalist shadow.",
+      "files": [{ "path": "registry/monkees/ui/dialog.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "files": [{ "path": "registry/monkees/ui/dropdown-menu.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "sonner",
+      "type": "registry:ui",
+      "title": "Sonner",
+      "description": "Toast notifications.",
+      "files": [{ "path": "registry/monkees/ui/sonner.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "files": [{ "path": "registry/monkees/ui/skeleton.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "Avatar with thick border.",
+      "files": [{ "path": "registry/monkees/ui/avatar.tsx", "type": "registry:ui" }]
     }
   ]
 }

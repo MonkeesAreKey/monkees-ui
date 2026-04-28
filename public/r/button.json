@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "button",
   "title": "Button",
-  "description": "Monkees-styled button with brutalist hard shadow.",
+  "description": "Brutalist button with hard offset shadow.",
   "files": [
     {
       "path": "registry/monkees/ui/button.tsx",
