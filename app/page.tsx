@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardHeader,
@@ -8,16 +8,12 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Badge } from "@/components/ui/badge"
-import { Skeleton } from "@/components/ui/skeleton"
-import {
-  Avatar,
-  AvatarImage,
-  AvatarFallback,
-} from "@/components/ui/avatar"
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Badge } from "@/components/ui/badge";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import {
   Dialog,
   DialogTrigger,
@@ -26,7 +22,7 @@ import {
   DialogTitle,
   DialogDescription,
   DialogFooter,
-} from "@/components/ui/dialog"
+} from "@/components/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -34,9 +30,9 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuLabel,
-} from "@/components/ui/dropdown-menu"
-import { Toaster } from "@/components/ui/sonner"
-import { toast } from "sonner"
+} from "@/components/ui/dropdown-menu";
+import { Toaster } from "@/components/ui/sonner";
+import { toast } from "sonner";
 
 const buttonVariants = [
   "default",
@@ -46,9 +42,9 @@ const buttonVariants = [
   "ghost",
   "destructive",
   "link",
-] as const
+] as const;
 
-const buttonSizes = ["xs", "sm", "default", "lg"] as const
+const buttonSizes = ["xs", "sm", "default", "lg"] as const;
 
 const badgeVariants = [
   "default",
@@ -56,15 +52,9 @@ const badgeVariants = [
   "accent",
   "outline",
   "destructive",
-] as const
+] as const;
 
-function Section({
-  title,
-  children,
-}: {
-  title: string
-  children: React.ReactNode
-}) {
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="space-y-4">
       <h2 className="text-xl font-bold uppercase tracking-wide">{title}</h2>
@@ -72,7 +62,7 @@ function Section({
         {children}
       </div>
     </section>
-  )
+  );
 }
 
 export default function Home() {
@@ -80,9 +70,7 @@ export default function Home() {
     <main className="mx-auto max-w-5xl px-6 py-12 space-y-10">
       <Toaster />
       <header className="space-y-2">
-        <h1 className="text-4xl font-black uppercase tracking-tight">
-          Monkees UI
-        </h1>
+        <h1 className="text-4xl font-black uppercase tracking-tight">Monkees UI</h1>
         <p className="text-muted-foreground">
           Brutalist component showcase. Yellow, black borders, hard shadows.
         </p>
@@ -157,13 +145,24 @@ export default function Home() {
       <Section title="Avatar">
         <div className="flex items-center gap-4">
           <Avatar size="sm">
+            <AvatarImage
+              src="https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/857.png"
+              alt=""
+            />
             <AvatarFallback>M1</AvatarFallback>
           </Avatar>
           <Avatar>
-            <AvatarImage src="/images/monkee.webp" alt="" />
+            <AvatarImage
+              src="https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/857.png"
+              alt=""
+            />
             <AvatarFallback>M2</AvatarFallback>
           </Avatar>
           <Avatar size="lg">
+            <AvatarImage
+              src="https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/857.png"
+              alt=""
+            />
             <AvatarFallback>M3</AvatarFallback>
           </Avatar>
         </div>
@@ -202,18 +201,12 @@ export default function Home() {
       <Section title="Toast (Sonner)">
         <div className="flex flex-wrap gap-3">
           <Button onClick={() => toast("Monkee minted!")}>Default</Button>
-          <Button
-            variant="accent"
-            onClick={() => toast.success("Tx confirmed")}
-          >
+          <Button variant="accent" onClick={() => toast.success("Tx confirmed")}>
             Success
           </Button>
-          <Button
-            variant="destructive"
-            onClick={() => toast.error("Tx reverted")}
-          >
+          <Button variant="destructive" onClick={() => toast.error("Tx reverted")}>
             Error
-          </Button>
+          </Button>{" "}
         </div>
       </Section>
 
@@ -225,5 +218,5 @@ export default function Home() {
         </div>
       </Section>
     </main>
-  )
+  );
 }
