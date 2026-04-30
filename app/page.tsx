@@ -33,7 +33,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
-import { AccountMenu } from "@/components/ui/account-menu";
+import { Account, AccountMenu } from "@/components/ui/account-menu";
 import {
   Select,
   SelectTrigger,
@@ -55,6 +55,73 @@ import {
   ImageCardSubtitle,
   ImageCardFooter,
 } from "@/components/ui/image-card";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+  SheetFooter,
+} from "@/components/ui/sheet";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Separator } from "@/components/ui/separator";
+import {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent,
+} from "@/components/ui/collapsible";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from "@/components/ui/tooltip";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@/components/ui/popover";
+import { Switch } from "@/components/ui/switch";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Progress } from "@/components/ui/progress";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+  BreadcrumbPage,
+} from "@/components/ui/breadcrumb";
+import {
+  CodeBlock,
+  CodeBlockHeader,
+  CodeBlockBody,
+  CodeBlockCopy,
+} from "@/components/ui/code-block";
+import {
+  TypographyH1,
+  TypographyH2,
+  TypographyH3,
+  TypographyH4,
+  TypographyP,
+  TypographyBlockquote,
+  TypographyInlineCode,
+  TypographyLead,
+  TypographyMuted,
+} from "@/components/ui/typography";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "@/components/ui/carousel";
+import { ChevronDownIcon, HeartIcon, StarIcon, ZapIcon } from "lucide-react";
+
+const codeExample = `npx shadcn@latest add "https://monkees-ui.vercel.app/r/button.json"`;
 
 const buttonVariants = [
   "default",
@@ -75,6 +142,48 @@ const badgeVariants = [
   "outline",
   "destructive",
 ] as const;
+
+import React from "react";
+
+function CollapsibleDemo() {
+  const [open, setOpen] = React.useState(false);
+  return (
+    <Collapsible open={open} onOpenChange={setOpen}>
+      <div className="flex items-center justify-between">
+        <h3 className="text-sm font-bold uppercase tracking-wide">Recent activity</h3>
+        <CollapsibleTrigger className="border-0 bg-transparent px-2 py-1 text-xs shadow-none hover:bg-muted hover:shadow-none hover:translate-x-0 hover:translate-y-0 active:translate-x-0 active:translate-y-0">
+          {open ? "Show less" : "Show more"} <ChevronDownIcon className={`ml-1 inline size-3 transition-transform ${open ? "rotate-180" : ""}`} />
+        </CollapsibleTrigger>
+      </div>
+      <div className="mt-3 space-y-2">
+        <div className="flex items-center gap-3 rounded-lg border-2 border-black bg-muted/30 px-3 py-2">
+          <Badge variant="accent" className="text-xs">Sale</Badge>
+          <span className="text-sm">Monkees #733 sold for <span className="font-bold">0.42 ETH</span></span>
+          <span className="ml-auto text-xs text-muted-foreground">2m ago</span>
+        </div>
+      </div>
+      <CollapsibleContent>
+        <div className="mt-2 space-y-2">
+          <div className="flex items-center gap-3 rounded-lg border-2 border-black bg-muted/30 px-3 py-2">
+            <Badge className="text-xs">List</Badge>
+            <span className="text-sm">Monkees #857 listed at <span className="font-bold">0.65 ETH</span></span>
+            <span className="ml-auto text-xs text-muted-foreground">15m ago</span>
+          </div>
+          <div className="flex items-center gap-3 rounded-lg border-2 border-black bg-muted/30 px-3 py-2">
+            <Badge variant="secondary" className="text-xs">Offer</Badge>
+            <span className="text-sm">Offer on #1758 for <span className="font-bold">0.25 ETH</span></span>
+            <span className="ml-auto text-xs text-muted-foreground">1h ago</span>
+          </div>
+          <div className="flex items-center gap-3 rounded-lg border-2 border-black bg-muted/30 px-3 py-2">
+            <Badge variant="accent" className="text-xs">Sale</Badge>
+            <span className="text-sm">Monkees #420 sold for <span className="font-bold">1.2 ETH</span></span>
+            <span className="ml-auto text-xs text-muted-foreground">3h ago</span>
+          </div>
+        </div>
+      </CollapsibleContent>
+    </Collapsible>
+  );
+}
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -322,10 +431,19 @@ export default function Home() {
         </div>
       </Section>
 
+      <Section title="Account">
+        <div className="flex flex-wrap items-center gap-4">
+          <Account address="0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045" />
+          <Account address="0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B" />
+          <Account
+            address="0x617480cBf64419C86F2b8333a1D7FE43Bc1C5E53"
+            avatarUrl="https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/1758.png"
+          />
+        </div>
+      </Section>
+
       <Section title="Account Menu">
         <div className="flex flex-wrap items-center gap-4">
-          <AccountMenu address="0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045" />
-          <AccountMenu address="0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B" />
           <AccountMenu address="0x1234567890abcdef1234567890abcdef12345678" />
           <AccountMenu
             address="0x617480cBf64419C86F2b8333a1D7FE43Bc1C5E53"
@@ -339,6 +457,281 @@ export default function Home() {
           <Skeleton className="h-4 w-48" />
           <Skeleton className="h-4 w-64" />
           <Skeleton className="h-24 w-full" />
+        </div>
+      </Section>
+
+      <Section title="Tabs">
+        <Tabs defaultValue="collection">
+          <TabsList>
+            <TabsTrigger value="collection">Collection</TabsTrigger>
+            <TabsTrigger value="activity">Activity</TabsTrigger>
+            <TabsTrigger value="offers">Offers</TabsTrigger>
+          </TabsList>
+          <TabsContent value="collection">
+            <p className="text-sm text-muted-foreground">Your Monkees collection will appear here.</p>
+          </TabsContent>
+          <TabsContent value="activity">
+            <p className="text-sm text-muted-foreground">Recent transfers and sales activity.</p>
+          </TabsContent>
+          <TabsContent value="offers">
+            <p className="text-sm text-muted-foreground">Incoming and outgoing offers.</p>
+          </TabsContent>
+        </Tabs>
+      </Section>
+
+      <Section title="Sheet">
+        <div className="flex gap-3">
+          <Sheet>
+            <SheetTrigger render={<Button variant="outline">Open left</Button>} />
+            <SheetContent side="left">
+              <SheetHeader>
+                <SheetTitle>Navigation</SheetTitle>
+                <SheetDescription>Browse the Monkees ecosystem.</SheetDescription>
+              </SheetHeader>
+              <div className="space-y-2 py-4">
+                <Button variant="ghost" className="w-full justify-start">Home</Button>
+                <Button variant="ghost" className="w-full justify-start">Collection</Button>
+                <Button variant="ghost" className="w-full justify-start">Marketplace</Button>
+              </div>
+              <SheetFooter>
+                <Button variant="outline" className="w-full">Close</Button>
+              </SheetFooter>
+            </SheetContent>
+          </Sheet>
+          <Sheet>
+            <SheetTrigger render={<Button>Open right</Button>} />
+            <SheetContent side="right">
+              <SheetHeader>
+                <SheetTitle>Filters</SheetTitle>
+                <SheetDescription>Narrow down your search.</SheetDescription>
+              </SheetHeader>
+              <div className="space-y-4 py-4">
+                <div className="space-y-2">
+                  <Label>Min price (ETH)</Label>
+                  <Input placeholder="0.01" />
+                </div>
+                <div className="space-y-2">
+                  <Label>Max price (ETH)</Label>
+                  <Input placeholder="10" />
+                </div>
+              </div>
+              <SheetFooter>
+                <Button className="w-full">Apply</Button>
+              </SheetFooter>
+            </SheetContent>
+          </Sheet>
+        </div>
+      </Section>
+
+      <Section title="Checkbox">
+        <div className="space-y-3">
+          <div className="flex items-center gap-2">
+            <Checkbox id="terms" defaultChecked />
+            <Label htmlFor="terms">Accept terms and conditions</Label>
+          </div>
+          <div className="flex items-center gap-2">
+            <Checkbox id="newsletter" />
+            <Label htmlFor="newsletter">Subscribe to newsletter</Label>
+          </div>
+          <div className="flex items-center gap-2">
+            <Checkbox id="disabled" disabled />
+            <Label htmlFor="disabled" className="opacity-50">Disabled option</Label>
+          </div>
+        </div>
+      </Section>
+
+      <Section title="Separator">
+        <div className="space-y-4">
+          <p className="text-sm">Content above the separator</p>
+          <Separator />
+          <p className="text-sm">Content below the separator</p>
+          <div className="flex h-8 items-center gap-4">
+            <span className="text-sm">Home</span>
+            <Separator orientation="vertical" />
+            <span className="text-sm">Collection</span>
+            <Separator orientation="vertical" />
+            <span className="text-sm">Profile</span>
+          </div>
+        </div>
+      </Section>
+
+      <Section title="Collapsible">
+        <CollapsibleDemo />
+      </Section>
+
+      <Section title="Tooltip">
+        <TooltipProvider>
+          <div className="flex gap-4">
+            <Tooltip>
+              <TooltipTrigger className="inline-flex size-8 items-center justify-center rounded-lg border-2 border-black bg-background shadow-[4px_4px_0_0_#000] transition-[transform,box-shadow] duration-150 hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[5px_5px_0_0_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">
+                <HeartIcon className="size-4" />
+              </TooltipTrigger>
+              <TooltipContent>Favorite</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger className="inline-flex size-8 items-center justify-center rounded-lg border-2 border-black bg-background shadow-[4px_4px_0_0_#000] transition-[transform,box-shadow] duration-150 hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[5px_5px_0_0_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">
+                <StarIcon className="size-4" />
+              </TooltipTrigger>
+              <TooltipContent>Wishlist</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger className="inline-flex size-8 items-center justify-center rounded-lg border-2 border-black bg-background shadow-[4px_4px_0_0_#000] transition-[transform,box-shadow] duration-150 hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[5px_5px_0_0_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">
+                <ZapIcon className="size-4" />
+              </TooltipTrigger>
+              <TooltipContent side="bottom">Quick buy</TooltipContent>
+            </Tooltip>
+          </div>
+        </TooltipProvider>
+      </Section>
+
+      <Section title="Popover">
+        <Popover>
+          <PopoverTrigger render={<Button variant="outline">Token info</Button>} />
+          <PopoverContent>
+            <div className="space-y-2">
+              <h4 className="font-bold uppercase tracking-wide">Monkees #733</h4>
+              <div className="grid grid-cols-2 gap-2 text-sm">
+                <span className="text-muted-foreground">Floor</span>
+                <span className="font-bold">0.015 ETH</span>
+                <span className="text-muted-foreground">Rank</span>
+                <span className="font-bold">#1,345</span>
+                <span className="text-muted-foreground">Traits</span>
+                <span className="font-bold">7</span>
+              </div>
+            </div>
+          </PopoverContent>
+        </Popover>
+      </Section>
+
+      <Section title="Switch">
+        <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <Switch id="dark-mode" defaultChecked />
+            <Label htmlFor="dark-mode">Dark mode</Label>
+          </div>
+          <div className="flex items-center gap-3">
+            <Switch id="notifications" />
+            <Label htmlFor="notifications">Email notifications</Label>
+          </div>
+          <div className="flex items-center gap-3">
+            <Switch id="disabled-switch" disabled />
+            <Label htmlFor="disabled-switch" className="opacity-50">Disabled</Label>
+          </div>
+        </div>
+      </Section>
+
+      <Section title="Radio Group">
+        <RadioGroup defaultValue="ethereum">
+          <div className="flex items-center gap-2">
+            <RadioGroupItem value="ethereum" id="r-eth" />
+            <Label htmlFor="r-eth">Ethereum</Label>
+          </div>
+          <div className="flex items-center gap-2">
+            <RadioGroupItem value="polygon" id="r-poly" />
+            <Label htmlFor="r-poly">Polygon</Label>
+          </div>
+          <div className="flex items-center gap-2">
+            <RadioGroupItem value="arbitrum" id="r-arb" />
+            <Label htmlFor="r-arb">Arbitrum</Label>
+          </div>
+        </RadioGroup>
+      </Section>
+
+      <Section title="Progress">
+        <div className="max-w-md space-y-4">
+          <div className="space-y-2">
+            <Label>Minting progress — 73%</Label>
+            <Progress value={73} />
+          </div>
+          <div className="space-y-2">
+            <Label>Upload — 25%</Label>
+            <Progress value={25} />
+          </div>
+          <div className="space-y-2">
+            <Label>Complete</Label>
+            <Progress value={100} />
+          </div>
+        </div>
+      </Section>
+
+      <Section title="Textarea">
+        <div className="max-w-md space-y-2">
+          <Label htmlFor="bio">Bio</Label>
+          <Textarea id="bio" placeholder="Tell us about your Monkee journey..." />
+        </div>
+      </Section>
+
+      <Section title="Breadcrumb">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#">Collection</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Monkees #733</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </Section>
+
+      <Section title="Code Block">
+        <CodeBlock>
+          <CodeBlockHeader>
+            <span>Terminal</span>
+            <CodeBlockCopy value={codeExample} />
+          </CodeBlockHeader>
+          <CodeBlockBody>
+            <code>{codeExample}</code>
+          </CodeBlockBody>
+        </CodeBlock>
+      </Section>
+
+      <Section title="Typography">
+        <div className="space-y-6">
+          <TypographyH1>Monkees UI</TypographyH1>
+          <TypographyH2>Component Library</TypographyH2>
+          <TypographyH3>Brutalist Design</TypographyH3>
+          <TypographyH4>Hard Shadows</TypographyH4>
+          <TypographyLead>A shadcn registry for the bold and brutalist.</TypographyLead>
+          <TypographyP>
+            Every component ships with thick borders, hard offset shadows, and uppercase
+            text. Install via <TypographyInlineCode>shadcn add</TypographyInlineCode> and
+            get brutalist styling out of the box.
+          </TypographyP>
+          <TypographyBlockquote>
+            &ldquo;Monkees don&rsquo;t do rounded corners and subtle gradients.&rdquo;
+          </TypographyBlockquote>
+          <TypographyMuted>Last updated: April 2026</TypographyMuted>
+        </div>
+      </Section>
+
+      <Section title="Carousel">
+        <div className="mx-auto max-w-md px-12">
+          <Carousel>
+            <CarouselContent>
+              {[
+                { id: 733, img: "https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/733.png" },
+                { id: 857, img: "https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/857.png" },
+                { id: 1758, img: "https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/1758.png" },
+              ].map((monkee) => (
+                <CarouselItem key={monkee.id}>
+                  <div className="overflow-hidden rounded-lg border-2 border-black shadow-[4px_4px_0_0_#000]">
+                    <img src={monkee.img} alt={`Monkees #${monkee.id}`} className="aspect-square w-full object-cover" />
+                    <div className="border-t-2 border-black bg-background px-3 py-2 text-center text-sm font-bold uppercase tracking-wide">
+                      Monkees #{monkee.id}
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
       </Section>
     </main>

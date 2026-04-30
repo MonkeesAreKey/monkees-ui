@@ -23,7 +23,7 @@ function SelectTrigger({
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       className={cn(
-        "inline-flex h-8 w-full items-center justify-between gap-2 rounded-lg border-2 border-black bg-background px-2.5 text-sm font-bold uppercase tracking-wide shadow-[4px_4px_0_0_#000] outline-none transition-[transform,box-shadow] duration-150 select-none",
+        "inline-flex h-8 w-full cursor-pointer items-center justify-between gap-2 rounded-lg border-2 border-black bg-background px-2.5 text-sm font-bold uppercase tracking-wide shadow-[4px_4px_0_0_#000] outline-none transition-[transform,box-shadow] duration-150 select-none",
         "hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[5px_5px_0_0_#000]",
         "active:translate-x-[2px] active:translate-y-[2px] active:shadow-none",
         "focus-visible:ring-3 focus-visible:ring-ring/50",
@@ -60,6 +60,7 @@ function SelectContent({
         sideOffset={sideOffset}
         align={align}
         alignOffset={alignOffset}
+        alignItemWithTrigger={false}
       >
         <SelectPrimitive.Popup
           data-slot="select-content"
