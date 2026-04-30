@@ -572,15 +572,18 @@ export default function Home() {
       </Section>
 
       <Section title="Carousel">
-        <div className="mx-auto max-w-md px-12">
-          <Carousel>
+        <div className="mx-auto px-12">
+          <Carousel opts={{ align: "start" }}>
             <CarouselContent>
               {[
                 { id: 733, img: "https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/733.png" },
                 { id: 857, img: "https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/857.png" },
                 { id: 1758, img: "https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/1758.png" },
+                { id: 420, img: "https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/420.png" },
+                { id: 111, img: "https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/111.png" },
+                { id: 999, img: "https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/999.png" },
               ].map((monkee) => (
-                <CarouselItem key={monkee.id}>
+                <CarouselItem key={monkee.id} className="basis-1/3">
                   <div className="overflow-hidden rounded-lg border-2 border-black shadow-[4px_4px_0_0_#000]">
                     <img src={monkee.img} alt={`Monkees #${monkee.id}`} className="aspect-square w-full object-cover" />
                     <div className="border-t-2 border-black bg-background px-3 py-2 text-center text-sm font-bold uppercase tracking-wide">
