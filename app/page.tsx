@@ -185,9 +185,13 @@ function CollapsibleDemo() {
   );
 }
 
+function slugify(text: string) {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section className="space-y-4">
+    <section id={slugify(title)} className="scroll-mt-8 space-y-4">
       <Separator />
       <h2 className="text-xl font-bold uppercase tracking-wide">{title}</h2>
       {children}
@@ -195,37 +199,69 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   );
 }
 
+const navGroups = [
+  {
+    label: "Actions",
+    items: ["Button — Variants", "Button — Sizes", "Badge", "Dropdown Menu"],
+  },
+  {
+    label: "Form Inputs",
+    items: ["Input + Label", "Textarea", "Select", "Checkbox", "Switch", "Radio Group", "Slider"],
+  },
+  {
+    label: "Data Display",
+    items: ["Avatar", "Account", "Account Menu", "Card", "Image Card", "Skeleton", "Progress"],
+  },
+  {
+    label: "Navigation",
+    items: ["Breadcrumb", "Tabs", "Carousel", "Collapsible"],
+  },
+  {
+    label: "Overlays & Feedback",
+    items: ["Dialog", "Sheet", "Toast (Sonner)", "Tooltip", "Popover"],
+  },
+  {
+    label: "Layout",
+    items: ["Separator", "Code Block"],
+  },
+  {
+    label: "Typography",
+    items: ["Typography"],
+  },
+];
+
 export default function Home() {
   return (
-    <main className="mx-auto max-w-5xl px-6 py-12 space-y-12">
-      <Toaster />
-      <header className="space-y-2">
-        <h1 className="text-4xl font-black uppercase tracking-tight">Monkees UI</h1>
-        <p className="text-muted-foreground">
-          Brutalist component showcase. Yellow, black borders, hard shadows.
-        </p>
-      </header>
-
-      {/* ── Typography ── */}
-
-      <Section title="Typography">
-        <div className="space-y-6">
-          <TypographyH1>Monkees UI</TypographyH1>
-          <TypographyH2>Component Library</TypographyH2>
-          <TypographyH3>Brutalist Design</TypographyH3>
-          <TypographyH4>Hard Shadows</TypographyH4>
-          <TypographyLead>A shadcn registry for the bold and brutalist.</TypographyLead>
-          <TypographyP>
-            Every component ships with thick borders, hard offset shadows, and uppercase
-            text. Install via <TypographyInlineCode>shadcn add</TypographyInlineCode> and
-            get brutalist styling out of the box.
-          </TypographyP>
-          <TypographyBlockquote>
-            &ldquo;Monkees don&rsquo;t do rounded corners and subtle gradients.&rdquo;
-          </TypographyBlockquote>
-          <TypographyMuted>Last updated: April 2026</TypographyMuted>
-        </div>
-      </Section>
+    <div className="flex min-h-screen">
+      <aside className="sticky top-0 hidden h-screen w-56 shrink-0 overflow-y-auto border-r-2 border-black py-8 pl-6 pr-4 lg:block">
+        <nav className="space-y-5">
+          {navGroups.map((group) => (
+            <div key={group.label} className="space-y-1">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-muted-foreground">{group.label}</h3>
+              <ul className="space-y-0.5">
+                {group.items.map((item) => (
+                  <li key={item}>
+                    <a
+                      href={`#${slugify(item)}`}
+                      className="block rounded-md px-2 py-1 text-sm text-foreground/70 transition-colors hover:bg-muted hover:text-foreground"
+                    >
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </nav>
+      </aside>
+      <main className="mx-auto min-w-0 max-w-5xl flex-1 px-6 py-12 space-y-12">
+        <Toaster />
+        <header className="space-y-2">
+          <h1 className="text-4xl font-black uppercase tracking-tight">Monkees UI</h1>
+          <p className="text-muted-foreground">
+            Brutalist component showcase. Yellow, black borders, hard shadows.
+          </p>
+        </header>
 
       {/* ── Actions ── */}
 
@@ -722,6 +758,27 @@ export default function Home() {
         </Popover>
       </Section>
 
+      {/* ── Typography ── */}
+
+      <Section title="Typography">
+        <div className="space-y-6">
+          <TypographyH1>Monkees UI</TypographyH1>
+          <TypographyH2>Component Library</TypographyH2>
+          <TypographyH3>Brutalist Design</TypographyH3>
+          <TypographyH4>Hard Shadows</TypographyH4>
+          <TypographyLead>A shadcn registry for the bold and brutalist.</TypographyLead>
+          <TypographyP>
+            Every component ships with thick borders, hard offset shadows, and uppercase
+            text. Install via <TypographyInlineCode>shadcn add</TypographyInlineCode> and
+            get brutalist styling out of the box.
+          </TypographyP>
+          <TypographyBlockquote>
+            &ldquo;Monkees don&rsquo;t do rounded corners and subtle gradients.&rdquo;
+          </TypographyBlockquote>
+          <TypographyMuted>Last updated: April 2026</TypographyMuted>
+        </div>
+      </Section>
+
       {/* ── Layout ── */}
 
       <Section title="Separator">
@@ -751,5 +808,6 @@ export default function Home() {
         </CodeBlock>
       </Section>
     </main>
+    </div>
   );
 }
