@@ -7,7 +7,6 @@ import useEmblaCarousel, {
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -83,6 +82,7 @@ function Carousel({
       setCanScrollPrev(api.canScrollPrev())
       setCanScrollNext(api.canScrollNext())
     }
+    handler()
     api.on("reInit", handler)
     api.on("select", handler)
     return () => {
@@ -121,7 +121,7 @@ function Carousel({
 function CarouselContent({ className, ...props }: React.ComponentProps<"div">) {
   const { carouselRef, orientation } = useCarousel()
   return (
-    <div ref={carouselRef} className="overflow-hidden">
+    <div ref={carouselRef} className="overflow-hidden p-1">
       <div
         data-slot="carousel-content"
         className={cn(
@@ -152,19 +152,20 @@ function CarouselItem({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+const carouselNavClass =
+  "inline-flex size-8 cursor-pointer items-center justify-center rounded-lg border-2 border-black bg-background shadow-[4px_4px_0_0_#000] outline-none transition-shadow duration-150 hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50"
+
 function CarouselPrevious({
   className,
-  variant = "outline",
-  size = "icon",
   ...props
-}: React.ComponentProps<typeof Button>) {
+}: React.ComponentProps<"button">) {
   const { orientation, scrollPrev, canScrollPrev } = useCarousel()
   return (
-    <Button
+    <button
+      type="button"
       data-slot="carousel-previous"
-      variant={variant}
-      size={size}
       className={cn(
+        carouselNavClass,
         "absolute",
         orientation === "horizontal"
           ? "-left-12 top-1/2 -translate-y-1/2"
@@ -175,25 +176,23 @@ function CarouselPrevious({
       onClick={scrollPrev}
       {...props}
     >
-      <ArrowLeftIcon />
+      <ArrowLeftIcon className="size-4" />
       <span className="sr-only">Previous slide</span>
-    </Button>
+    </button>
   )
 }
 
 function CarouselNext({
   className,
-  variant = "outline",
-  size = "icon",
   ...props
-}: React.ComponentProps<typeof Button>) {
+}: React.ComponentProps<"button">) {
   const { orientation, scrollNext, canScrollNext } = useCarousel()
   return (
-    <Button
+    <button
+      type="button"
       data-slot="carousel-next"
-      variant={variant}
-      size={size}
       className={cn(
+        carouselNavClass,
         "absolute",
         orientation === "horizontal"
           ? "-right-12 top-1/2 -translate-y-1/2"
@@ -204,9 +203,9 @@ function CarouselNext({
       onClick={scrollNext}
       {...props}
     >
-      <ArrowRightIcon />
+      <ArrowRightIcon className="size-4" />
       <span className="sr-only">Next slide</span>
-    </Button>
+    </button>
   )
 }
 

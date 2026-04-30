@@ -188,17 +188,16 @@ function CollapsibleDemo() {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="space-y-4">
+      <Separator />
       <h2 className="text-xl font-bold uppercase tracking-wide">{title}</h2>
-      <div className="rounded-xl border-2 border-black bg-card p-6 shadow-[4px_4px_0_0_#000]">
-        {children}
-      </div>
+      {children}
     </section>
   );
 }
 
 export default function Home() {
   return (
-    <main className="mx-auto max-w-5xl px-6 py-12 space-y-10">
+    <main className="mx-auto max-w-5xl px-6 py-12 space-y-12">
       <Toaster />
       <header className="space-y-2">
         <h1 className="text-4xl font-black uppercase tracking-tight">Monkees UI</h1>
@@ -207,7 +206,30 @@ export default function Home() {
         </p>
       </header>
 
-      <Section title="Button — variants">
+      {/* ── Typography ── */}
+
+      <Section title="Typography">
+        <div className="space-y-6">
+          <TypographyH1>Monkees UI</TypographyH1>
+          <TypographyH2>Component Library</TypographyH2>
+          <TypographyH3>Brutalist Design</TypographyH3>
+          <TypographyH4>Hard Shadows</TypographyH4>
+          <TypographyLead>A shadcn registry for the bold and brutalist.</TypographyLead>
+          <TypographyP>
+            Every component ships with thick borders, hard offset shadows, and uppercase
+            text. Install via <TypographyInlineCode>shadcn add</TypographyInlineCode> and
+            get brutalist styling out of the box.
+          </TypographyP>
+          <TypographyBlockquote>
+            &ldquo;Monkees don&rsquo;t do rounded corners and subtle gradients.&rdquo;
+          </TypographyBlockquote>
+          <TypographyMuted>Last updated: April 2026</TypographyMuted>
+        </div>
+      </Section>
+
+      {/* ── Actions ── */}
+
+      <Section title="Button — Variants">
         <div className="flex flex-wrap gap-4">
           {buttonVariants.map((v) => (
             <Button key={v} variant={v}>
@@ -217,7 +239,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section title="Button — sizes">
+      <Section title="Button — Sizes">
         <div className="flex flex-wrap items-center gap-4">
           {buttonSizes.map((s) => (
             <Button key={s} size={s}>
@@ -237,10 +259,169 @@ export default function Home() {
         </div>
       </Section>
 
+      <Section title="Dropdown Menu">
+        <DropdownMenu>
+          <DropdownMenuTrigger render={<Button variant="outline">Account</Button>} />
+          <DropdownMenuContent>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Profile</DropdownMenuItem>
+            <DropdownMenuItem>Settings</DropdownMenuItem>
+            <DropdownMenuItem>Sign out</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </Section>
+
+      {/* ── Form Inputs ── */}
+
       <Section title="Input + Label">
         <div className="grid max-w-sm gap-2">
           <Label htmlFor="wallet">Wallet address</Label>
           <Input id="wallet" placeholder="0xMonkee..." />
+        </div>
+      </Section>
+
+      <Section title="Textarea">
+        <div className="max-w-md space-y-2">
+          <Label htmlFor="bio">Bio</Label>
+          <Textarea id="bio" placeholder="Tell us about your Monkee journey..." />
+        </div>
+      </Section>
+
+      <Section title="Select">
+        <div className="grid max-w-xs gap-4">
+          <Select defaultValue="mainnet">
+            <SelectTrigger>
+              <SelectValue placeholder="Select network" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectGroupLabel>Mainnets</SelectGroupLabel>
+                <SelectItem value="mainnet">Ethereum</SelectItem>
+                <SelectItem value="polygon">Polygon</SelectItem>
+                <SelectItem value="arbitrum">Arbitrum</SelectItem>
+                <SelectItem value="optimism">Optimism</SelectItem>
+              </SelectGroup>
+              <SelectSeparator />
+              <SelectGroup>
+                <SelectGroupLabel>Testnets</SelectGroupLabel>
+                <SelectItem value="sepolia">Sepolia</SelectItem>
+                <SelectItem value="goerli" disabled>Goerli (deprecated)</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
+      </Section>
+
+      <Section title="Checkbox">
+        <div className="space-y-3">
+          <div className="flex items-center gap-2">
+            <Checkbox id="terms" defaultChecked />
+            <Label htmlFor="terms">Accept terms and conditions</Label>
+          </div>
+          <div className="flex items-center gap-2">
+            <Checkbox id="newsletter" />
+            <Label htmlFor="newsletter">Subscribe to newsletter</Label>
+          </div>
+          <div className="flex items-center gap-2">
+            <Checkbox id="disabled" disabled />
+            <Label htmlFor="disabled" className="opacity-50">Disabled option</Label>
+          </div>
+        </div>
+      </Section>
+
+      <Section title="Switch">
+        <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <Switch id="dark-mode" defaultChecked />
+            <Label htmlFor="dark-mode">Dark mode</Label>
+          </div>
+          <div className="flex items-center gap-3">
+            <Switch id="notifications" />
+            <Label htmlFor="notifications">Email notifications</Label>
+          </div>
+          <div className="flex items-center gap-3">
+            <Switch id="disabled-switch" disabled />
+            <Label htmlFor="disabled-switch" className="opacity-50">Disabled</Label>
+          </div>
+        </div>
+      </Section>
+
+      <Section title="Radio Group">
+        <RadioGroup defaultValue="ethereum">
+          <div className="flex items-center gap-2">
+            <RadioGroupItem value="ethereum" id="r-eth" />
+            <Label htmlFor="r-eth">Ethereum</Label>
+          </div>
+          <div className="flex items-center gap-2">
+            <RadioGroupItem value="polygon" id="r-poly" />
+            <Label htmlFor="r-poly">Polygon</Label>
+          </div>
+          <div className="flex items-center gap-2">
+            <RadioGroupItem value="arbitrum" id="r-arb" />
+            <Label htmlFor="r-arb">Arbitrum</Label>
+          </div>
+        </RadioGroup>
+      </Section>
+
+      <Section title="Slider">
+        <div className="grid max-w-sm gap-6">
+          <div className="space-y-2">
+            <Label>Price (ETH)</Label>
+            <Slider defaultValue={50} />
+          </div>
+          <div className="space-y-2">
+            <Label>Rarity rank</Label>
+            <Slider defaultValue={25} min={0} max={100} step={5} />
+          </div>
+        </div>
+      </Section>
+
+      {/* ── Data Display ── */}
+
+      <Section title="Avatar">
+        <div className="flex items-center gap-4">
+          <Avatar size="sm">
+            <AvatarImage
+              src="https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/857.png"
+              alt=""
+            />
+            <AvatarFallback>M1</AvatarFallback>
+          </Avatar>
+          <Avatar>
+            <AvatarImage
+              src="https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/857.png"
+              alt=""
+            />
+            <AvatarFallback>M2</AvatarFallback>
+          </Avatar>
+          <Avatar size="lg">
+            <AvatarImage
+              src="https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/857.png"
+              alt=""
+            />
+            <AvatarFallback>M3</AvatarFallback>
+          </Avatar>
+        </div>
+      </Section>
+
+      <Section title="Account">
+        <div className="flex flex-wrap items-center gap-4">
+          <Account address="0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045" />
+          <Account address="0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B" />
+          <Account
+            address="0x617480cBf64419C86F2b8333a1D7FE43Bc1C5E53"
+            avatarUrl="https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/1758.png"
+          />
+        </div>
+      </Section>
+
+      <Section title="Account Menu">
+        <div className="flex flex-wrap items-center gap-4">
+          <AccountMenu address="0x1234567890abcdef1234567890abcdef12345678" />
+          <AccountMenu
+            address="0x617480cBf64419C86F2b8333a1D7FE43Bc1C5E53"
+            avatarUrl="https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/1758.png"
+          />
         </div>
       </Section>
 
@@ -270,111 +451,6 @@ export default function Home() {
               No description provided.
             </CardContent>
           </Card>
-        </div>
-      </Section>
-
-      <Section title="Avatar">
-        <div className="flex items-center gap-4">
-          <Avatar size="sm">
-            <AvatarImage
-              src="https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/857.png"
-              alt=""
-            />
-            <AvatarFallback>M1</AvatarFallback>
-          </Avatar>
-          <Avatar>
-            <AvatarImage
-              src="https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/857.png"
-              alt=""
-            />
-            <AvatarFallback>M2</AvatarFallback>
-          </Avatar>
-          <Avatar size="lg">
-            <AvatarImage
-              src="https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/857.png"
-              alt=""
-            />
-            <AvatarFallback>M3</AvatarFallback>
-          </Avatar>
-        </div>
-      </Section>
-
-      <Section title="Dialog">
-        <Dialog>
-          <DialogTrigger render={<Button>Open dialog</Button>} />
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Confirm mint</DialogTitle>
-              <DialogDescription>
-                You are about to mint 1 Monkee for 0.05 ETH.
-              </DialogDescription>
-            </DialogHeader>
-            <DialogFooter showCloseButton>
-              <Button>Confirm</Button>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
-      </Section>
-
-      <Section title="Dropdown Menu">
-        <DropdownMenu>
-          <DropdownMenuTrigger render={<Button variant="outline">Account</Button>} />
-          <DropdownMenuContent>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Profile</DropdownMenuItem>
-            <DropdownMenuItem>Settings</DropdownMenuItem>
-            <DropdownMenuItem>Sign out</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </Section>
-
-      <Section title="Toast (Sonner)">
-        <div className="flex flex-wrap gap-3">
-          <Button onClick={() => toast("Monkee minted!")}>Default</Button>
-          <Button variant="accent" onClick={() => toast.success("Tx confirmed")}>
-            Success
-          </Button>
-          <Button variant="destructive" onClick={() => toast.error("Tx reverted")}>
-            Error
-          </Button>{" "}
-        </div>
-      </Section>
-
-      <Section title="Slider">
-        <div className="grid max-w-sm gap-6">
-          <div className="space-y-2">
-            <Label>Price (ETH)</Label>
-            <Slider defaultValue={50} />
-          </div>
-          <div className="space-y-2">
-            <Label>Rarity rank</Label>
-            <Slider defaultValue={25} min={0} max={100} step={5} />
-          </div>
-        </div>
-      </Section>
-
-      <Section title="Select">
-        <div className="grid max-w-xs gap-4">
-          <Select defaultValue="mainnet">
-            <SelectTrigger>
-              <SelectValue placeholder="Select network" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                <SelectGroupLabel>Mainnets</SelectGroupLabel>
-                <SelectItem value="mainnet">Ethereum</SelectItem>
-                <SelectItem value="polygon">Polygon</SelectItem>
-                <SelectItem value="arbitrum">Arbitrum</SelectItem>
-                <SelectItem value="optimism">Optimism</SelectItem>
-              </SelectGroup>
-              <SelectSeparator />
-              <SelectGroup>
-                <SelectGroupLabel>Testnets</SelectGroupLabel>
-                <SelectItem value="sepolia">Sepolia</SelectItem>
-                <SelectItem value="goerli" disabled>Goerli (deprecated)</SelectItem>
-              </SelectGroup>
-            </SelectContent>
-          </Select>
         </div>
       </Section>
 
@@ -431,33 +507,49 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section title="Account">
-        <div className="flex flex-wrap items-center gap-4">
-          <Account address="0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045" />
-          <Account address="0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B" />
-          <Account
-            address="0x617480cBf64419C86F2b8333a1D7FE43Bc1C5E53"
-            avatarUrl="https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/1758.png"
-          />
-        </div>
-      </Section>
-
-      <Section title="Account Menu">
-        <div className="flex flex-wrap items-center gap-4">
-          <AccountMenu address="0x1234567890abcdef1234567890abcdef12345678" />
-          <AccountMenu
-            address="0x617480cBf64419C86F2b8333a1D7FE43Bc1C5E53"
-            avatarUrl="https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/1758.png"
-          />
-        </div>
-      </Section>
-
       <Section title="Skeleton">
         <div className="space-y-3">
           <Skeleton className="h-4 w-48" />
           <Skeleton className="h-4 w-64" />
           <Skeleton className="h-24 w-full" />
         </div>
+      </Section>
+
+      <Section title="Progress">
+        <div className="max-w-md space-y-4">
+          <div className="space-y-2">
+            <Label>Minting progress — 73%</Label>
+            <Progress value={73} />
+          </div>
+          <div className="space-y-2">
+            <Label>Upload — 25%</Label>
+            <Progress value={25} />
+          </div>
+          <div className="space-y-2">
+            <Label>Complete</Label>
+            <Progress value={100} />
+          </div>
+        </div>
+      </Section>
+
+      {/* ── Navigation ── */}
+
+      <Section title="Breadcrumb">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#">Collection</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Monkees #733</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
       </Section>
 
       <Section title="Tabs">
@@ -477,6 +569,54 @@ export default function Home() {
             <p className="text-sm text-muted-foreground">Incoming and outgoing offers.</p>
           </TabsContent>
         </Tabs>
+      </Section>
+
+      <Section title="Carousel">
+        <div className="mx-auto max-w-md px-12">
+          <Carousel>
+            <CarouselContent>
+              {[
+                { id: 733, img: "https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/733.png" },
+                { id: 857, img: "https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/857.png" },
+                { id: 1758, img: "https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/1758.png" },
+              ].map((monkee) => (
+                <CarouselItem key={monkee.id}>
+                  <div className="overflow-hidden rounded-lg border-2 border-black shadow-[4px_4px_0_0_#000]">
+                    <img src={monkee.img} alt={`Monkees #${monkee.id}`} className="aspect-square w-full object-cover" />
+                    <div className="border-t-2 border-black bg-background px-3 py-2 text-center text-sm font-bold uppercase tracking-wide">
+                      Monkees #{monkee.id}
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
+      </Section>
+
+      <Section title="Collapsible">
+        <CollapsibleDemo />
+      </Section>
+
+      {/* ── Overlays & Feedback ── */}
+
+      <Section title="Dialog">
+        <Dialog>
+          <DialogTrigger render={<Button>Open dialog</Button>} />
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Confirm mint</DialogTitle>
+              <DialogDescription>
+                You are about to mint 1 Monkee for 0.05 ETH.
+              </DialogDescription>
+            </DialogHeader>
+            <DialogFooter showCloseButton>
+              <Button>Confirm</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </Section>
 
       <Section title="Sheet">
@@ -523,40 +663,16 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section title="Checkbox">
-        <div className="space-y-3">
-          <div className="flex items-center gap-2">
-            <Checkbox id="terms" defaultChecked />
-            <Label htmlFor="terms">Accept terms and conditions</Label>
-          </div>
-          <div className="flex items-center gap-2">
-            <Checkbox id="newsletter" />
-            <Label htmlFor="newsletter">Subscribe to newsletter</Label>
-          </div>
-          <div className="flex items-center gap-2">
-            <Checkbox id="disabled" disabled />
-            <Label htmlFor="disabled" className="opacity-50">Disabled option</Label>
-          </div>
+      <Section title="Toast (Sonner)">
+        <div className="flex flex-wrap gap-3">
+          <Button onClick={() => toast("Monkee minted!")}>Default</Button>
+          <Button variant="accent" onClick={() => toast.success("Tx confirmed")}>
+            Success
+          </Button>
+          <Button variant="destructive" onClick={() => toast.error("Tx reverted")}>
+            Error
+          </Button>
         </div>
-      </Section>
-
-      <Section title="Separator">
-        <div className="space-y-4">
-          <p className="text-sm">Content above the separator</p>
-          <Separator />
-          <p className="text-sm">Content below the separator</p>
-          <div className="flex h-8 items-center gap-4">
-            <span className="text-sm">Home</span>
-            <Separator orientation="vertical" />
-            <span className="text-sm">Collection</span>
-            <Separator orientation="vertical" />
-            <span className="text-sm">Profile</span>
-          </div>
-        </div>
-      </Section>
-
-      <Section title="Collapsible">
-        <CollapsibleDemo />
       </Section>
 
       <Section title="Tooltip">
@@ -603,80 +719,21 @@ export default function Home() {
         </Popover>
       </Section>
 
-      <Section title="Switch">
+      {/* ── Layout ── */}
+
+      <Section title="Separator">
         <div className="space-y-4">
-          <div className="flex items-center gap-3">
-            <Switch id="dark-mode" defaultChecked />
-            <Label htmlFor="dark-mode">Dark mode</Label>
-          </div>
-          <div className="flex items-center gap-3">
-            <Switch id="notifications" />
-            <Label htmlFor="notifications">Email notifications</Label>
-          </div>
-          <div className="flex items-center gap-3">
-            <Switch id="disabled-switch" disabled />
-            <Label htmlFor="disabled-switch" className="opacity-50">Disabled</Label>
+          <p className="text-sm">Content above the separator</p>
+          <Separator />
+          <p className="text-sm">Content below the separator</p>
+          <div className="flex h-8 items-center gap-4">
+            <span className="text-sm">Home</span>
+            <Separator orientation="vertical" />
+            <span className="text-sm">Collection</span>
+            <Separator orientation="vertical" />
+            <span className="text-sm">Profile</span>
           </div>
         </div>
-      </Section>
-
-      <Section title="Radio Group">
-        <RadioGroup defaultValue="ethereum">
-          <div className="flex items-center gap-2">
-            <RadioGroupItem value="ethereum" id="r-eth" />
-            <Label htmlFor="r-eth">Ethereum</Label>
-          </div>
-          <div className="flex items-center gap-2">
-            <RadioGroupItem value="polygon" id="r-poly" />
-            <Label htmlFor="r-poly">Polygon</Label>
-          </div>
-          <div className="flex items-center gap-2">
-            <RadioGroupItem value="arbitrum" id="r-arb" />
-            <Label htmlFor="r-arb">Arbitrum</Label>
-          </div>
-        </RadioGroup>
-      </Section>
-
-      <Section title="Progress">
-        <div className="max-w-md space-y-4">
-          <div className="space-y-2">
-            <Label>Minting progress — 73%</Label>
-            <Progress value={73} />
-          </div>
-          <div className="space-y-2">
-            <Label>Upload — 25%</Label>
-            <Progress value={25} />
-          </div>
-          <div className="space-y-2">
-            <Label>Complete</Label>
-            <Progress value={100} />
-          </div>
-        </div>
-      </Section>
-
-      <Section title="Textarea">
-        <div className="max-w-md space-y-2">
-          <Label htmlFor="bio">Bio</Label>
-          <Textarea id="bio" placeholder="Tell us about your Monkee journey..." />
-        </div>
-      </Section>
-
-      <Section title="Breadcrumb">
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="#">Home</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink href="#">Collection</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Monkees #733</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
       </Section>
 
       <Section title="Code Block">
@@ -689,50 +746,6 @@ export default function Home() {
             <code>{codeExample}</code>
           </CodeBlockBody>
         </CodeBlock>
-      </Section>
-
-      <Section title="Typography">
-        <div className="space-y-6">
-          <TypographyH1>Monkees UI</TypographyH1>
-          <TypographyH2>Component Library</TypographyH2>
-          <TypographyH3>Brutalist Design</TypographyH3>
-          <TypographyH4>Hard Shadows</TypographyH4>
-          <TypographyLead>A shadcn registry for the bold and brutalist.</TypographyLead>
-          <TypographyP>
-            Every component ships with thick borders, hard offset shadows, and uppercase
-            text. Install via <TypographyInlineCode>shadcn add</TypographyInlineCode> and
-            get brutalist styling out of the box.
-          </TypographyP>
-          <TypographyBlockquote>
-            &ldquo;Monkees don&rsquo;t do rounded corners and subtle gradients.&rdquo;
-          </TypographyBlockquote>
-          <TypographyMuted>Last updated: April 2026</TypographyMuted>
-        </div>
-      </Section>
-
-      <Section title="Carousel">
-        <div className="mx-auto max-w-md px-12">
-          <Carousel>
-            <CarouselContent>
-              {[
-                { id: 733, img: "https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/733.png" },
-                { id: 857, img: "https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/857.png" },
-                { id: 1758, img: "https://euoahz3m66j5mevn6rgocuje3xgsnemeh6z6zmwu43f6yx36pjea.arweave.net/JRwD52z3k9YSrfRM4VEk3c0mkYQ_s-yy1ObL7F9-ekg/1758.png" },
-              ].map((monkee) => (
-                <CarouselItem key={monkee.id}>
-                  <div className="overflow-hidden rounded-lg border-2 border-black shadow-[4px_4px_0_0_#000]">
-                    <img src={monkee.img} alt={`Monkees #${monkee.id}`} className="aspect-square w-full object-cover" />
-                    <div className="border-t-2 border-black bg-background px-3 py-2 text-center text-sm font-bold uppercase tracking-wide">
-                      Monkees #{monkee.id}
-                    </div>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
-        </div>
       </Section>
     </main>
   );
