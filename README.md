@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Monkees UI
 
-## Getting Started
+Monkees UI is the component library for the Monkees ecosystem. It provides reusable React components with the Monkees visual style so apps, dashboards, mint pages, and community tools can share a consistent UI.
 
-First, run the development server:
+The project is published as a **shadcn registry**: consumers can install individual components into their own codebase instead of depending on a packaged black box.
+
+## What is in this repo?
+
+- `components/ui/*` — the source of truth for every component
+- `registry.json` — the shadcn registry definition
+- `app/` — the public demo/docs site showing the components in use
+- `public/` — static assets used by the demo site
+
+## Install a component
+
+Use the shadcn CLI with the registry URL:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npx shadcn@latest add "https://monkees-ui.vercel.app/r/button.json"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Replace `button` with any available component name from `registry.json`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Local development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Install dependencies:
 
-## Learn More
+```bash
+pnpm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+Run the demo site:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+pnpm dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Open [http://localhost:3000](http://localhost:3000).
 
-## Deploy on Vercel
+Run linting:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+pnpm lint
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Tech stack
+
+- Next.js App Router
+- React
+- Tailwind CSS v4
+- Base UI primitives
+- shadcn registry
+- class-variance-authority
+
+## Project goal
+
+The goal is simple: make it easy for any Monkees project to copy polished, consistent UI components and move faster while keeping the same brand feel across the ecosystem.
