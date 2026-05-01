@@ -101,6 +101,7 @@ import {
   CodeBlockBody,
   CodeBlockCopy,
 } from "@/components/ui/code-block";
+import Image from "next/image";
 import {
   TypographyH1,
   TypographyH2,
@@ -234,6 +235,20 @@ export default function Home() {
   return (
     <div className="flex min-h-screen">
       <aside className="sticky top-0 hidden h-screen w-56 shrink-0 overflow-y-auto border-r-2 border-black py-8 pl-6 pr-4 lg:block">
+        <a
+          href="#top"
+          aria-label="Monkees UI home"
+          className="mb-8 flex w-full items-center justify-center rounded-lg border-2 border-black bg-secondary p-4 shadow-[4px_4px_0_0_#000] transition-all hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[5px_5px_0_0_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+        >
+          <Image
+            src="/monkees-logo-crop.png"
+            alt=""
+            width={946}
+            height={346}
+            className="h-auto w-full rounded-md"
+            priority
+          />
+        </a>
         <nav className="space-y-5">
           {navGroups.map((group) => (
             <div key={group.label} className="space-y-1">
@@ -256,10 +271,10 @@ export default function Home() {
       </aside>
       <main className="mx-auto min-w-0 max-w-5xl flex-1 px-6 py-12 space-y-12">
         <Toaster />
-        <header className="space-y-2">
+        <header id="top" className="space-y-2 scroll-mt-8">
           <h1 className="text-4xl font-black uppercase tracking-tight">Monkees UI</h1>
           <p className="text-muted-foreground">
-            Brutalist component showcase. Yellow, black borders, hard shadows.
+            UI components styled for the Monkees.
           </p>
         </header>
 
