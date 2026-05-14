@@ -16,7 +16,7 @@ The project is published as a **shadcn registry**: consumers can install individ
 Use the shadcn CLI with the registry URL:
 
 ```bash
-npx shadcn@latest add "https://monkees-ui.vercel.app/r/button.json"
+npx shadcn@latest add "https://ui.monkees.vip/r/button.json"
 ```
 
 Replace `button` with any available component name from `registry.json`.

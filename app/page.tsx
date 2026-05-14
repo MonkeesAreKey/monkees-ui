@@ -117,7 +117,7 @@ import {
 } from "@/components/ui/carousel";
 import { ChevronDownIcon, HeartIcon, StarIcon, ZapIcon } from "lucide-react";
 
-const codeExample = `npx shadcn@latest add "https://monkees-ui.vercel.app/r/button.json"`;
+const codeExample = `npx shadcn@latest add "https://ui.monkees.vip/r/button.json"`;
 
 const buttonVariants = [
   "default",
