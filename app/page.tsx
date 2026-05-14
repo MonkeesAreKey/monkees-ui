@@ -29,7 +29,6 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
-  DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu";
 import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
@@ -118,7 +117,7 @@ import {
 } from "@/components/ui/carousel";
 import { ChevronDownIcon, HeartIcon, StarIcon, ZapIcon } from "lucide-react";
 
-const codeExample = `npx shadcn@latest add "https://monkees-ui.vercel.app/r/button.json"`;
+const codeExample = `npx shadcn@latest add "https://ui.monkees.vip/r/button.json"`;
 
 const buttonVariants = [
   "default",
@@ -208,7 +207,7 @@ function slugify(text: string) {
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section id={slugify(title)} className="scroll-mt-8 space-y-4">
+    <section id={slugify(title)} className="scroll-mt-28 space-y-4">
       <Separator />
       <h2 className="text-xl font-bold uppercase tracking-wide">{title}</h2>
       {children}
@@ -263,24 +262,33 @@ const navGroups = [
   },
 ];
 
-export default function Home() {
+function HomeNavbar() {
   return (
-    <div className="flex min-h-screen">
-      <aside className="sticky top-0 hidden h-screen w-56 shrink-0 overflow-y-auto border-r-2 border-black py-8 pl-6 pr-4 lg:block">
-        <a
-          href="#top"
-          aria-label="Monkees UI home"
-          className="mb-8 flex w-full items-center justify-center rounded-lg border-2 border-black bg-accent p-4 shadow-[4px_4px_0_0_#000] transition-all hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[5px_5px_0_0_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
-        >
+    <nav className="fixed left-0 right-0 top-0 z-[100] border-b-[3px] border-black bg-accent/95 py-3 shadow-[0_4px_0_0_rgba(0,0,0,1)] backdrop-blur-sm">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4">
+        <a href="#top" aria-label="Monkees UI home" className="block no-underline">
           <Image
             src="/monkees-logo-crop.png"
-            alt=""
+            alt="Monkees UI"
             width={946}
             height={346}
-            className="h-auto w-full rounded-md"
+            sizes="(min-width: 768px) 145px, 95px"
+            className="h-8 w-auto object-contain md:h-12"
             priority
           />
         </a>
+
+      </div>
+    </nav>
+  );
+}
+
+export default function Home() {
+  return (
+    <>
+      <HomeNavbar />
+      <div className="flex min-h-screen pt-20">
+      <aside className="sticky top-20 hidden h-[calc(100vh-5rem)] w-56 shrink-0 overflow-y-auto border-r-2 border-black py-8 pl-6 pr-4 lg:block">
         <nav className="space-y-5">
           {navGroups.map((group) => (
             <div key={group.label} className="space-y-1">
@@ -305,9 +313,43 @@ export default function Home() {
       </aside>
       <main className="mx-auto min-w-0 max-w-5xl flex-1 px-6 py-12 space-y-12">
         <Toaster />
-        <header id="top" className="space-y-2 scroll-mt-8">
-          <h1 className="text-4xl font-black uppercase tracking-tight">Monkees UI</h1>
-          <p className="text-muted-foreground">UI components styled for the Monkees.</p>
+        <header id="top" className="space-y-6 scroll-mt-28">
+          <div className="space-y-2">
+            <h1 className="text-4xl font-black uppercase tracking-tight">Monkees UI</h1>
+            <p className="text-muted-foreground">UI components styled for the Monkees.</p>
+          </div>
+          <div className="space-y-3 rounded-xl border-2 border-black bg-card p-4 shadow-[4px_4px_0_0_#000]">
+            <div className="space-y-1">
+              <h2 className="text-xl font-bold uppercase tracking-wide">Install a component</h2>
+              <p className="text-sm text-muted-foreground">
+                Use the shadcn CLI to pull components directly from the Monkees UI registry.
+                Components install into your app and keep using your configured aliases.
+              </p>
+            </div>
+            <CodeBlock>
+              <CodeBlockHeader>
+                <span>Terminal</span>
+                <CodeBlockCopy value={codeExample} />
+              </CodeBlockHeader>
+              <CodeBlockBody>
+                <code>{codeExample}</code>
+              </CodeBlockBody>
+            </CodeBlock>
+            <div className="grid gap-3 text-sm md:grid-cols-3">
+              <div className="rounded-lg border-2 border-black bg-background p-3">
+                <span className="font-bold uppercase tracking-wide">1. Choose</span>
+                <p className="mt-1 text-muted-foreground">Pick a component from the sidebar or examples below.</p>
+              </div>
+              <div className="rounded-lg border-2 border-black bg-background p-3">
+                <span className="font-bold uppercase tracking-wide">2. Install</span>
+                <p className="mt-1 text-muted-foreground">Run the command and let shadcn add the files to your project.</p>
+              </div>
+              <div className="rounded-lg border-2 border-black bg-background p-3">
+                <span className="font-bold uppercase tracking-wide">3. Import</span>
+                <p className="mt-1 text-muted-foreground">Use components from your local <TypographyInlineCode>@/components/ui</TypographyInlineCode> path.</p>
+              </div>
+            </div>
+          </div>
         </header>
 
         {/* ── Actions ── */}
@@ -853,16 +895,16 @@ export default function Home() {
           <div className="space-y-6">
             <TypographyH1>Monkees UI</TypographyH1>
             <TypographyH2>Component Library</TypographyH2>
-            <TypographyH3>Brutalist Design</TypographyH3>
-            <TypographyH4>Hard Shadows</TypographyH4>
-            <TypographyLead>A shadcn registry for the bold and brutalist.</TypographyLead>
+            <TypographyH3>Playful Design</TypographyH3>
+            <TypographyH4>Expressive Type</TypographyH4>
+            <TypographyLead>A shadcn registry for bold Monkees interfaces.</TypographyLead>
             <TypographyP>
-              Every component ships with thick borders, hard offset shadows, and uppercase
-              text. Install via <TypographyInlineCode>shadcn add</TypographyInlineCode>{" "}
-              and get brutalist styling out of the box.
+              Every component ships with strong visual defaults, readable spacing, and
+              playful typography. Install via <TypographyInlineCode>shadcn add</TypographyInlineCode>{" "}
+              and start building Monkees-flavored interfaces.
             </TypographyP>
             <TypographyBlockquote>
-              &ldquo;Monkees don&rsquo;t do rounded corners and subtle gradients.&rdquo;
+              &ldquo;Monkees UI keeps product screens loud, clear, and fun.&rdquo;
             </TypographyBlockquote>
             <TypographyMuted>Last updated: April 2026</TypographyMuted>
           </div>
@@ -897,6 +939,7 @@ export default function Home() {
           </CodeBlock>
         </Section>
       </main>
-    </div>
+      </div>
+    </>
   );
 }

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "code-block",
+  "title": "Code Block",
+  "description": "Code display with brutalist border and copy button.",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "components/ui/code-block.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { CopyIcon, CheckIcon } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { Button } from \"@/components/ui/button\"\n\nfunction CodeBlock({\n  className,\n  children,\n  ...props\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"code-block\"\n      className={cn(\n        \"relative rounded-lg border-2 border-black bg-muted shadow-[4px_4px_0_0_#000]\",\n        className\n      )}\n      {...props}\n    >\n      {children}\n    </div>\n  )\n}\n\nfunction CodeBlockHeader({\n  className,\n  children,\n  ...props\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"code-block-header\"\n      className={cn(\n        \"flex items-center justify-between border-b-2 border-black px-4 py-2 text-xs font-bold uppercase tracking-wide text-muted-foreground\",\n        className\n      )}\n      {...props}\n    >\n      {children}\n    </div>\n  )\n}\n\nfunction CodeBlockBody({\n  className,\n  ...props\n}: React.ComponentProps<\"pre\">) {\n  return (\n    <pre\n      data-slot=\"code-block-body\"\n      className={cn(\n        \"overflow-x-auto p-4 text-sm leading-relaxed\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction CodeBlockCopy({\n  value,\n  className,\n  ...props\n}: Omit<React.ComponentProps<typeof Button>, \"children\"> & {\n  value: string\n}) {\n  const [copied, setCopied] = React.useState(false)\n\n  const handleCopy = React.useCallback(() => {\n    navigator.clipboard.writeText(value)\n    setCopied(true)\n    setTimeout(() => setCopied(false), 2000)\n  }, [value])\n\n  return (\n    <Button\n      data-slot=\"code-block-copy\"\n      variant=\"ghost\"\n      size=\"icon-xs\"\n      className={className}\n      onClick={handleCopy}\n      {...props}\n    >\n      {copied ? <CheckIcon /> : <CopyIcon />}\n      <span className=\"sr-only\">{copied ? \"Copied\" : \"Copy code\"}</span>\n    </Button>\n  )\n}\n\nexport { CodeBlock, CodeBlockHeader, CodeBlockBody, CodeBlockCopy }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

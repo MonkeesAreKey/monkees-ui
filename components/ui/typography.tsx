@@ -10,7 +10,7 @@ function TypographyH1({
     <h1
       data-slot="typography-h1"
       className={cn(
-        "font-heading scroll-m-20 text-4xl font-bold uppercase tracking-wide lg:text-5xl",
+        "font-heading scroll-m-20 text-4xl font-normal uppercase tracking-[0.04em] lg:text-5xl",
         className
       )}
       {...props}
@@ -26,7 +26,7 @@ function TypographyH2({
     <h2
       data-slot="typography-h2"
       className={cn(
-        "font-heading scroll-m-20 border-b-2 border-black pb-2 text-3xl font-bold uppercase tracking-wide first:mt-0",
+        "font-heading scroll-m-20 border-b-2 border-black pb-2 text-3xl font-normal uppercase tracking-[0.04em] first:mt-0",
         className
       )}
       {...props}
@@ -42,7 +42,7 @@ function TypographyH3({
     <h3
       data-slot="typography-h3"
       className={cn(
-        "font-heading scroll-m-20 text-2xl font-bold uppercase tracking-wide",
+        "font-heading scroll-m-20 text-2xl font-normal uppercase tracking-[0.04em]",
         className
       )}
       {...props}
@@ -58,7 +58,7 @@ function TypographyH4({
     <h4
       data-slot="typography-h4"
       className={cn(
-        "font-heading scroll-m-20 text-xl font-bold uppercase tracking-wide",
+        "font-heading scroll-m-20 text-xl font-normal uppercase tracking-[0.04em]",
         className
       )}
       {...props}

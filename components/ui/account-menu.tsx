@@ -1,12 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { useEnsName, useEnsAvatar } from "wagmi"
-import { normalize } from "viem/ens"
+import { useEnsName } from "wagmi"
 import type { Address } from "viem"
 
+import { AccountAvatar } from "@/components/ui/account-avatar"
 import { cn } from "@/lib/utils"
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -21,13 +20,6 @@ function truncateAddress(address: string) {
   return `${address.slice(0, 6)}…${address.slice(-4)}`
 }
 
-function addressToGradient(address: string) {
-  const hex = address.slice(2, 14)
-  const c1 = `#${hex.slice(0, 6)}`
-  const c2 = `#${hex.slice(6, 12)}`
-  return `linear-gradient(135deg, ${c1}, ${c2})`
-}
-
 function Account({
   address,
   avatarUrl,
@@ -38,11 +30,6 @@ function Account({
   avatarUrl?: string
 }) {
   const { data: ensName } = useEnsName({ address })
-  const { data: ensAvatar } = useEnsAvatar({
-    name: ensName ? normalize(ensName) : undefined,
-  })
-
-  const resolvedAvatar = avatarUrl ?? ensAvatar
 
   return (
     <div
@@ -50,15 +37,7 @@ function Account({
       className={cn("inline-flex items-center gap-2", className)}
       {...props}
     >
-      <Avatar size="sm">
-        {resolvedAvatar ? (
-          <AvatarImage src={resolvedAvatar} alt={ensName ?? address} />
-        ) : null}
-        <AvatarFallback
-          style={{ background: addressToGradient(address) }}
-          className="text-transparent"
-        />
-      </Avatar>
+      <AccountAvatar address={address} avatarUrl={avatarUrl} alt={ensName ?? address} />
       <span className="text-sm font-bold tracking-wide">
         {ensName ? (
           <span className="uppercase">{ensName}</span>

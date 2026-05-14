@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "title": "Switch",
+  "description": "Toggle switch with thick border and offset shadow.",
+  "files": [
+    {
+      "path": "components/ui/switch.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Switch as SwitchPrimitive } from \"@base-ui/react/switch\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Switch({\n  className,\n  ...props\n}: SwitchPrimitive.Root.Props) {\n  return (\n    <SwitchPrimitive.Root\n      data-slot=\"switch\"\n      className={cn(\n        \"peer inline-flex h-6 w-10 shrink-0 cursor-pointer items-center rounded-full border-2 border-black bg-muted shadow-[2px_2px_0_0_#000] outline-none transition-[transform,box-shadow,background-color] duration-150\",\n        \"hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[3px_3px_0_0_#000]\",\n        \"active:translate-x-[1px] active:translate-y-[1px] active:shadow-none\",\n        \"focus-visible:ring-3 focus-visible:ring-ring/50\",\n        \"data-checked:bg-primary\",\n        \"disabled:pointer-events-none disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    >\n      <SwitchPrimitive.Thumb\n        className={cn(\n          \"pointer-events-none block size-4 rounded-full border-2 border-black bg-background transition-transform duration-150\",\n          \"data-checked:translate-x-[calc(100%+2px)] data-unchecked:translate-x-0.5\"\n        )}\n      />\n    </SwitchPrimitive.Root>\n  )\n}\n\nexport { Switch }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox",
+  "title": "Checkbox",
+  "description": "Checkbox with thick border and offset shadow.",
+  "files": [
+    {
+      "path": "components/ui/checkbox.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Checkbox as CheckboxPrimitive } from \"@base-ui/react/checkbox\"\nimport { CheckIcon } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Checkbox({\n  className,\n  ...props\n}: CheckboxPrimitive.Root.Props) {\n  return (\n    <CheckboxPrimitive.Root\n      data-slot=\"checkbox\"\n      className={cn(\n        \"peer flex size-5 shrink-0 cursor-pointer items-center justify-center rounded-md border-2 border-black bg-background shadow-[2px_2px_0_0_#000] outline-none transition-[transform,box-shadow] duration-150\",\n        \"hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[3px_3px_0_0_#000]\",\n        \"active:translate-x-[1px] active:translate-y-[1px] active:shadow-none\",\n        \"focus-visible:ring-3 focus-visible:ring-ring/50\",\n        \"data-checked:bg-primary data-checked:text-primary-foreground\",\n        \"data-indeterminate:bg-primary data-indeterminate:text-primary-foreground\",\n        \"disabled:pointer-events-none disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    >\n      <CheckboxPrimitive.Indicator className=\"flex items-center justify-center text-current\">\n        <CheckIcon className=\"size-3.5 stroke-3\" />\n      </CheckboxPrimitive.Indicator>\n    </CheckboxPrimitive.Root>\n  )\n}\n\nexport { Checkbox }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

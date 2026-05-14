@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "image-card",
+  "title": "Image Card",
+  "description": "NFT-style image card with title, badge, and footer.",
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "components/ui/image-card.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\nimport { Badge } from \"@/components/ui/badge\"\n\nfunction ImageCard({\n  className,\n  children,\n  ...props\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"image-card\"\n      className={cn(\n        \"group/image-card overflow-hidden rounded-lg border-2 border-black bg-card shadow-[4px_4px_0_0_#000] transition-[transform,box-shadow] duration-150\",\n        \"hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[5px_5px_0_0_#000]\",\n        \"active:translate-x-[2px] active:translate-y-[2px] active:shadow-none\",\n        className\n      )}\n      {...props}\n    >\n      {children}\n    </div>\n  )\n}\n\nfunction ImageCardImage({\n  className,\n  alt = \"\",\n  ...props\n}: React.ComponentProps<\"img\">) {\n  return (\n    <img\n      data-slot=\"image-card-image\"\n      alt={alt}\n      className={cn(\"aspect-square w-full object-cover\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction ImageCardContent({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"image-card-content\"\n      className={cn(\"space-y-1.5 p-3\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction ImageCardHeader({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"image-card-header\"\n      className={cn(\"flex items-center justify-between gap-2\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction ImageCardTitle({\n  className,\n  ...props\n}: React.ComponentProps<\"h3\">) {\n  return (\n    <h3\n      data-slot=\"image-card-title\"\n      className={cn(\"text-sm font-bold uppercase tracking-wide\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction ImageCardBadge({\n  className,\n  ...props\n}: React.ComponentProps<typeof Badge>) {\n  return (\n    <Badge\n      data-slot=\"image-card-badge\"\n      variant=\"outline\"\n      className={cn(\"shrink-0 text-xs\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction ImageCardSubtitle({\n  className,\n  ...props\n}: React.ComponentProps<\"p\">) {\n  return (\n    <p\n      data-slot=\"image-card-subtitle\"\n      className={cn(\"text-xs text-muted-foreground\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction ImageCardFooter({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"image-card-footer\"\n      className={cn(\n        \"border-t-2 border-black px-3 py-2 text-xs text-muted-foreground\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport {\n  ImageCard,\n  ImageCardImage,\n  ImageCardContent,\n  ImageCardHeader,\n  ImageCardTitle,\n  ImageCardBadge,\n  ImageCardSubtitle,\n  ImageCardFooter,\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
