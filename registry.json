@@ -93,12 +93,21 @@
       "files": [{ "path": "components/ui/image-card.tsx", "type": "registry:ui" }]
     },
     {
+      "name": "account-avatar",
+      "type": "registry:ui",
+      "title": "Account Avatar",
+      "description": "Ethereum account avatar with ENS image resolution.",
+      "dependencies": ["wagmi", "viem", "@tanstack/react-query"],
+      "registryDependencies": ["avatar"],
+      "files": [{ "path": "components/ui/account-avatar.tsx", "type": "registry:ui" }]
+    },
+    {
       "name": "account-menu",
       "type": "registry:ui",
       "title": "Account Menu",
       "description": "Ethereum account pill with ENS resolution.",
       "dependencies": ["wagmi", "viem", "@tanstack/react-query"],
-      "registryDependencies": ["avatar"],
+      "registryDependencies": ["account-avatar", "avatar"],
       "files": [{ "path": "components/ui/account-menu.tsx", "type": "registry:ui" }]
     },
     {

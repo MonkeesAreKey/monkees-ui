@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "separator",
+  "title": "Separator",
+  "description": "Thick black divider line.",
+  "files": [
+    {
+      "path": "components/ui/separator.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Separator as SeparatorPrimitive } from \"@base-ui/react/separator\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Separator({\n  className,\n  ...props\n}: SeparatorPrimitive.Props) {\n  return (\n    <SeparatorPrimitive\n      data-slot=\"separator\"\n      className={cn(\n        \"shrink-0 bg-black data-horizontal:h-[2px] data-horizontal:w-full data-vertical:h-full data-vertical:w-[2px]\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Separator }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

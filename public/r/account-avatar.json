@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "account-avatar",
+  "title": "Account Avatar",
+  "description": "Ethereum account avatar with ENS image resolution.",
+  "dependencies": [
+    "wagmi",
+    "viem",
+    "@tanstack/react-query"
+  ],
+  "registryDependencies": [
+    "avatar"
+  ],
+  "files": [
+    {
+      "path": "components/ui/account-avatar.tsx",
+      "content": "\"use client\"\n\nimport { useEnsAvatar, useEnsName } from \"wagmi\"\nimport { normalize } from \"viem/ens\"\nimport type { Address } from \"viem\"\n\nimport { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\"\n\nfunction addressToGradient(address: string) {\n  const hex = address.slice(2, 14)\n  const c1 = `#${hex.slice(0, 6)}`\n  const c2 = `#${hex.slice(6, 12)}`\n  return `linear-gradient(135deg, ${c1}, ${c2})`\n}\n\nfunction AccountAvatar({\n  address,\n  avatarUrl,\n  alt,\n  size = \"sm\",\n  className,\n}: {\n  address: Address\n  avatarUrl?: string\n  alt?: string\n  size?: \"default\" | \"sm\" | \"lg\"\n  className?: string\n}) {\n  const { data: ensName } = useEnsName({ address })\n  const { data: ensAvatar } = useEnsAvatar({\n    name: ensName ? normalize(ensName) : undefined,\n  })\n\n  const resolvedAvatar = avatarUrl ?? ensAvatar\n\n  return (\n    <Avatar size={size} className={className}>\n      {resolvedAvatar ? (\n        <AvatarImage src={resolvedAvatar} alt={alt ?? ensName ?? address} />\n      ) : null}\n      <AvatarFallback\n        style={{ background: addressToGradient(address) }}\n        className=\"text-transparent\"\n      />\n    </Avatar>\n  )\n}\n\nexport { AccountAvatar }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

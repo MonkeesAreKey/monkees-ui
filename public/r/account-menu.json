@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "account-menu",
+  "title": "Account Menu",
+  "description": "Ethereum account pill with ENS resolution.",
+  "dependencies": [
+    "wagmi",
+    "viem",
+    "@tanstack/react-query"
+  ],
+  "registryDependencies": [
+    "account-avatar",
+    "avatar"
+  ],
+  "files": [
+    {
+      "path": "components/ui/account-menu.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { useEnsName } from \"wagmi\"\nimport type { Address } from \"viem\"\n\nimport { AccountAvatar } from \"@/components/ui/account-avatar\"\nimport { cn } from \"@/lib/utils\"\nimport {\n  DropdownMenu,\n  DropdownMenuTrigger,\n  DropdownMenuContent,\n  DropdownMenuItem,\n  DropdownMenuSeparator,\n  DropdownMenuLabel,\n  DropdownMenuGroup,\n} from \"@/components/ui/dropdown-menu\"\n\nfunction truncateAddress(address: string) {\n  return `${address.slice(0, 6)}…${address.slice(-4)}`\n}\n\nfunction Account({\n  address,\n  avatarUrl,\n  className,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  address: Address\n  avatarUrl?: string\n}) {\n  const { data: ensName } = useEnsName({ address })\n\n  return (\n    <div\n      data-slot=\"account\"\n      className={cn(\"inline-flex items-center gap-2\", className)}\n      {...props}\n    >\n      <AccountAvatar address={address} avatarUrl={avatarUrl} alt={ensName ?? address} />\n      <span className=\"text-sm font-bold tracking-wide\">\n        {ensName ? (\n          <span className=\"uppercase\">{ensName}</span>\n        ) : (\n          <span>{truncateAddress(address)}</span>\n        )}\n      </span>\n    </div>\n  )\n}\n\nfunction AccountMenu({\n  address,\n  avatarUrl,\n  className,\n  children,\n}: {\n  address: Address\n  avatarUrl?: string\n  className?: string\n  children?: React.ReactNode\n}) {\n  return (\n    <DropdownMenu>\n      <DropdownMenuTrigger\n        className={cn(\n          \"inline-flex cursor-pointer items-center gap-2 rounded-lg border-2 border-black bg-background px-2.5 py-1.5 shadow-[4px_4px_0_0_#000] transition-[transform,box-shadow] duration-150 select-none\",\n          \"hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[5px_5px_0_0_#000]\",\n          \"active:translate-x-[2px] active:translate-y-[2px] active:shadow-none\",\n          className\n        )}\n      >\n        <Account address={address} avatarUrl={avatarUrl} />\n      </DropdownMenuTrigger>\n      <DropdownMenuContent>\n        {children ?? (\n          <>\n            <DropdownMenuGroup>\n              <DropdownMenuLabel>Account</DropdownMenuLabel>\n              <DropdownMenuItem>Copy Address</DropdownMenuItem>\n              <DropdownMenuItem>View on Explorer</DropdownMenuItem>\n            </DropdownMenuGroup>\n            <DropdownMenuSeparator />\n            <DropdownMenuItem variant=\"destructive\">Disconnect</DropdownMenuItem>\n          </>\n        )}\n      </DropdownMenuContent>\n    </DropdownMenu>\n  )\n}\n\nexport { Account, AccountMenu }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -29,7 +29,6 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
-  DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu";
 import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
@@ -208,7 +207,7 @@ function slugify(text: string) {
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section id={slugify(title)} className="scroll-mt-8 space-y-4">
+    <section id={slugify(title)} className="scroll-mt-28 space-y-4">
       <Separator />
       <h2 className="text-xl font-bold uppercase tracking-wide">{title}</h2>
       {children}
@@ -263,10 +262,58 @@ const navGroups = [
   },
 ];
 
+const navButtonClassName =
+  "inline-flex h-9 min-w-24 items-center justify-center rounded-lg border-2 border-black bg-background px-3 text-xs font-bold uppercase tracking-widest text-foreground no-underline shadow-[4px_4px_0_0_#000] transition-[transform,box-shadow] duration-150 hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[5px_5px_0_0_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none";
+
+function HomeNavbar() {
+  return (
+    <nav className="fixed left-0 right-0 top-0 z-[100] border-b-[3px] border-black bg-accent/95 py-3 shadow-[0_4px_0_0_rgba(0,0,0,1)] backdrop-blur-sm">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4">
+        <a href="#top" aria-label="Monkees UI home" className="block no-underline">
+          <Image
+            src="/monkees-logo-crop.png"
+            alt="Monkees UI"
+            width={946}
+            height={346}
+            sizes="(min-width: 768px) 145px, 95px"
+            quality={100}
+            className="h-8 w-auto object-contain md:h-12"
+            priority
+          />
+        </a>
+
+        <div className="hidden items-center gap-2 lg:flex xl:gap-4">
+          {navGroups.map((group) => (
+            <DropdownMenu key={group.label} modal={false}>
+              <DropdownMenuTrigger className={navButtonClassName}>
+                {group.label}
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="center" className="min-w-48">
+                {group.items.map((item) => (
+                  <DropdownMenuItem key={item} className="p-0">
+                    <a
+                      href={`#${slugify(item)}`}
+                      className="block w-full px-3 py-2 text-xs font-bold uppercase tracking-widest no-underline"
+                    >
+                      {item}
+                    </a>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ))}
+        </div>
+      </div>
+    </nav>
+  );
+}
+
 export default function Home() {
   return (
-    <div className="flex min-h-screen">
-      <aside className="sticky top-0 hidden h-screen w-56 shrink-0 overflow-y-auto border-r-2 border-black py-8 pl-6 pr-4 lg:block">
+    <>
+      <HomeNavbar />
+      <div className="flex min-h-screen pt-20">
+      <aside className="sticky top-20 hidden h-[calc(100vh-5rem)] w-56 shrink-0 overflow-y-auto border-r-2 border-black py-8 pl-6 pr-4 lg:block">
         <a
           href="#top"
           aria-label="Monkees UI home"
@@ -305,7 +352,7 @@ export default function Home() {
       </aside>
       <main className="mx-auto min-w-0 max-w-5xl flex-1 px-6 py-12 space-y-12">
         <Toaster />
-        <header id="top" className="space-y-2 scroll-mt-8">
+        <header id="top" className="space-y-2 scroll-mt-28">
           <h1 className="text-4xl font-black uppercase tracking-tight">Monkees UI</h1>
           <p className="text-muted-foreground">UI components styled for the Monkees.</p>
         </header>
@@ -897,6 +944,7 @@ export default function Home() {
           </CodeBlock>
         </Section>
       </main>
-    </div>
+      </div>
+    </>
   );
 }

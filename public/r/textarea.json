@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea",
+  "title": "Textarea",
+  "description": "Multi-line input with brutalist border and shadow.",
+  "files": [
+    {
+      "path": "components/ui/textarea.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Textarea({ className, ...props }: React.ComponentProps<\"textarea\">) {\n  return (\n    <textarea\n      data-slot=\"textarea\"\n      className={cn(\n        \"flex min-h-20 w-full rounded-lg border-2 border-black bg-background px-3 py-2 text-sm shadow-[4px_4px_0_0_#000] outline-none transition-[transform,box-shadow] duration-150 placeholder:text-muted-foreground\",\n        \"hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[5px_5px_0_0_#000]\",\n        \"focus:-translate-x-[1px] focus:-translate-y-[1px] focus:shadow-[5px_5px_0_0_#000] focus:ring-3 focus:ring-ring/50\",\n        \"disabled:pointer-events-none disabled:opacity-50\",\n        \"aria-invalid:border-destructive aria-invalid:ring-destructive/20\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Textarea }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
