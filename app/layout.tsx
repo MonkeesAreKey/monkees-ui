@@ -21,18 +21,26 @@ const geistMono = Geist_Mono({
 });
 
 const title = "Monkees UI";
-const description = "UI components styled for the Monkees.";
+const description = "Playful shadcn registry components styled for the Monkees.";
+const url = "https://ui.monkees.vip";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(url),
   title,
   description,
   openGraph: {
+    type: "website",
+    url,
+    siteName: "Monkees UI",
     title,
     description,
+    images: ["/opengraph-image.png"],
   },
   twitter: {
+    card: "summary_large_image",
     title,
     description,
+    images: ["/opengraph-image.png"],
   },
 };
 
