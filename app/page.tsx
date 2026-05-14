@@ -262,9 +262,6 @@ const navGroups = [
   },
 ];
 
-const navButtonClassName =
-  "inline-flex h-9 min-w-24 items-center justify-center rounded-lg border-2 border-black bg-background px-3 text-xs font-bold uppercase tracking-widest text-foreground no-underline shadow-[4px_4px_0_0_#000] transition-[transform,box-shadow] duration-150 hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[5px_5px_0_0_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none";
-
 function HomeNavbar() {
   return (
     <nav className="fixed left-0 right-0 top-0 z-[100] border-b-[3px] border-black bg-accent/95 py-3 shadow-[0_4px_0_0_rgba(0,0,0,1)] backdrop-blur-sm">
@@ -281,27 +278,6 @@ function HomeNavbar() {
           />
         </a>
 
-        <div className="hidden items-center gap-2 lg:flex xl:gap-4">
-          {navGroups.map((group) => (
-            <DropdownMenu key={group.label} modal={false}>
-              <DropdownMenuTrigger className={navButtonClassName}>
-                {group.label}
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="center" className="min-w-48">
-                {group.items.map((item) => (
-                  <DropdownMenuItem key={item} className="p-0">
-                    <a
-                      href={`#${slugify(item)}`}
-                      className="block w-full px-3 py-2 text-xs font-bold uppercase tracking-widest no-underline"
-                    >
-                      {item}
-                    </a>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
-          ))}
-        </div>
       </div>
     </nav>
   );
@@ -313,20 +289,6 @@ export default function Home() {
       <HomeNavbar />
       <div className="flex min-h-screen pt-20">
       <aside className="sticky top-20 hidden h-[calc(100vh-5rem)] w-56 shrink-0 overflow-y-auto border-r-2 border-black py-8 pl-6 pr-4 lg:block">
-        <a
-          href="#top"
-          aria-label="Monkees UI home"
-          className="mb-8 flex w-full items-center justify-center rounded-lg border-2 border-black bg-accent p-4 shadow-[4px_4px_0_0_#000] transition-all hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[5px_5px_0_0_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
-        >
-          <Image
-            src="/monkees-logo-crop.png"
-            alt=""
-            width={946}
-            height={346}
-            className="h-auto w-full rounded-md"
-            priority
-          />
-        </a>
         <nav className="space-y-5">
           {navGroups.map((group) => (
             <div key={group.label} className="space-y-1">
