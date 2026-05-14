@@ -276,7 +276,6 @@ function HomeNavbar() {
             width={946}
             height={346}
             sizes="(min-width: 768px) 145px, 95px"
-            quality={100}
             className="h-8 w-auto object-contain md:h-12"
             priority
           />
