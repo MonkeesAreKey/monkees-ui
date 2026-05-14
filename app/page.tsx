@@ -861,16 +861,16 @@ export default function Home() {
           <div className="space-y-6">
             <TypographyH1>Monkees UI</TypographyH1>
             <TypographyH2>Component Library</TypographyH2>
-            <TypographyH3>Brutalist Design</TypographyH3>
-            <TypographyH4>Hard Shadows</TypographyH4>
-            <TypographyLead>A shadcn registry for the bold and brutalist.</TypographyLead>
+            <TypographyH3>Playful Design</TypographyH3>
+            <TypographyH4>Expressive Type</TypographyH4>
+            <TypographyLead>A shadcn registry for bold Monkees interfaces.</TypographyLead>
             <TypographyP>
-              Every component ships with thick borders, hard offset shadows, and uppercase
-              text. Install via <TypographyInlineCode>shadcn add</TypographyInlineCode>{" "}
-              and get brutalist styling out of the box.
+              Every component ships with strong visual defaults, readable spacing, and
+              playful typography. Install via <TypographyInlineCode>shadcn add</TypographyInlineCode>{" "}
+              and start building Monkees-flavored interfaces.
             </TypographyP>
             <TypographyBlockquote>
-              &ldquo;Monkees don&rsquo;t do rounded corners and subtle gradients.&rdquo;
+              &ldquo;Monkees UI keeps product screens loud, clear, and fun.&rdquo;
             </TypographyBlockquote>
             <TypographyMuted>Last updated: April 2026</TypographyMuted>
           </div>
