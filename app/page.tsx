@@ -313,9 +313,20 @@ export default function Home() {
       </aside>
       <main className="mx-auto min-w-0 max-w-5xl flex-1 px-6 py-12 space-y-12">
         <Toaster />
-        <header id="top" className="space-y-2 scroll-mt-28">
-          <h1 className="text-4xl font-black uppercase tracking-tight">Monkees UI</h1>
-          <p className="text-muted-foreground">UI components styled for the Monkees.</p>
+        <header id="top" className="space-y-4 scroll-mt-28">
+          <div className="space-y-2">
+            <h1 className="text-4xl font-black uppercase tracking-tight">Monkees UI</h1>
+            <p className="text-muted-foreground">UI components styled for the Monkees.</p>
+          </div>
+          <CodeBlock>
+            <CodeBlockHeader>
+              <span>Install</span>
+              <CodeBlockCopy value={codeExample} />
+            </CodeBlockHeader>
+            <CodeBlockBody>
+              <code>{codeExample}</code>
+            </CodeBlockBody>
+          </CodeBlock>
         </header>
 
         {/* ── Actions ── */}
