@@ -313,20 +313,43 @@ export default function Home() {
       </aside>
       <main className="mx-auto min-w-0 max-w-5xl flex-1 px-6 py-12 space-y-12">
         <Toaster />
-        <header id="top" className="space-y-4 scroll-mt-28">
+        <header id="top" className="space-y-6 scroll-mt-28">
           <div className="space-y-2">
             <h1 className="text-4xl font-black uppercase tracking-tight">Monkees UI</h1>
             <p className="text-muted-foreground">UI components styled for the Monkees.</p>
           </div>
-          <CodeBlock>
-            <CodeBlockHeader>
-              <span>Install</span>
-              <CodeBlockCopy value={codeExample} />
-            </CodeBlockHeader>
-            <CodeBlockBody>
-              <code>{codeExample}</code>
-            </CodeBlockBody>
-          </CodeBlock>
+          <div className="space-y-3 rounded-xl border-2 border-black bg-card p-4 shadow-[4px_4px_0_0_#000]">
+            <div className="space-y-1">
+              <h2 className="text-xl font-bold uppercase tracking-wide">Install a component</h2>
+              <p className="text-sm text-muted-foreground">
+                Use the shadcn CLI to pull components directly from the Monkees UI registry.
+                Components install into your app and keep using your configured aliases.
+              </p>
+            </div>
+            <CodeBlock>
+              <CodeBlockHeader>
+                <span>Terminal</span>
+                <CodeBlockCopy value={codeExample} />
+              </CodeBlockHeader>
+              <CodeBlockBody>
+                <code>{codeExample}</code>
+              </CodeBlockBody>
+            </CodeBlock>
+            <div className="grid gap-3 text-sm md:grid-cols-3">
+              <div className="rounded-lg border-2 border-black bg-background p-3">
+                <span className="font-bold uppercase tracking-wide">1. Choose</span>
+                <p className="mt-1 text-muted-foreground">Pick a component from the sidebar or examples below.</p>
+              </div>
+              <div className="rounded-lg border-2 border-black bg-background p-3">
+                <span className="font-bold uppercase tracking-wide">2. Install</span>
+                <p className="mt-1 text-muted-foreground">Run the command and let shadcn add the files to your project.</p>
+              </div>
+              <div className="rounded-lg border-2 border-black bg-background p-3">
+                <span className="font-bold uppercase tracking-wide">3. Import</span>
+                <p className="mt-1 text-muted-foreground">Use components from your local <TypographyInlineCode>@/components/ui</TypographyInlineCode> path.</p>
+              </div>
+            </div>
+          </div>
         </header>
 
         {/* ── Actions ── */}
