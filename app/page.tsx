@@ -115,7 +115,7 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from "@/components/ui/carousel";
-import { ChevronDownIcon, HeartIcon, StarIcon, ZapIcon } from "lucide-react";
+import { ChevronDownIcon, GithubIcon, HeartIcon, StarIcon, ZapIcon } from "lucide-react";
 
 const codeExample = `npx shadcn@latest add "https://ui.monkees.vip/r/button.json"`;
 
@@ -277,7 +277,15 @@ function HomeNavbar() {
             priority
           />
         </a>
-
+        <a
+          href="https://github.com/MonkeesAreKey/monkees-ui"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="View Monkees UI on GitHub"
+          className="inline-flex size-10 items-center justify-center rounded-lg border-2 border-black bg-background text-foreground shadow-[3px_3px_0_0_#000] transition-all hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[4px_4px_0_0_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+        >
+          <GithubIcon className="size-5" aria-hidden="true" />
+        </a>
       </div>
     </nav>
   );
