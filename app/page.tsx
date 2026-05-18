@@ -287,7 +287,7 @@ export default function Home() {
   return (
     <>
       <HomeNavbar />
-      <div className="flex min-h-screen pt-20">
+      <div className="mx-auto flex min-h-screen w-full max-w-7xl px-4 pt-20">
       <aside className="sticky top-20 hidden h-[calc(100vh-5rem)] w-56 shrink-0 overflow-y-auto border-r-2 border-black py-8 pl-6 pr-4 lg:block">
         <nav className="space-y-5">
           {navGroups.map((group) => (
