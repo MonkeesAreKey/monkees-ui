@@ -5,6 +5,7 @@ import { useEnsName } from "wagmi"
 import type { Address } from "viem"
 
 import { AccountAvatar } from "@/components/ui/account-avatar"
+import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import {
   DropdownMenu,
@@ -63,12 +64,12 @@ function AccountMenu({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        className={cn(
-          "inline-flex cursor-pointer items-center gap-2 rounded-lg border-2 border-black bg-background px-2.5 py-1.5 shadow-[4px_4px_0_0_#000] transition-[transform,box-shadow] duration-150 select-none",
-          "hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[5px_5px_0_0_#000]",
-          "active:translate-x-[2px] active:translate-y-[2px] active:shadow-none",
-          className
-        )}
+        render={
+          <Button
+            variant="outline"
+            className={cn("h-auto px-2.5 py-1.5 hover:bg-background", className)}
+          />
+        }
       >
         <Account address={address} avatarUrl={avatarUrl} />
       </DropdownMenuTrigger>

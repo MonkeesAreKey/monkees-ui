@@ -7,21 +7,21 @@
       "name": "button",
       "type": "registry:ui",
       "title": "Button",
-      "description": "Brutalist button with hard offset shadow.",
+      "description": "Button with 2px contours, soft corners, and a subtle tactile shadow.",
       "files": [{ "path": "components/ui/button.tsx", "type": "registry:ui" }]
     },
     {
       "name": "card",
       "type": "registry:ui",
       "title": "Card",
-      "description": "Card with thick border and offset shadow.",
+      "description": "Card with a fine border, soft corners, and a light shadow.",
       "files": [{ "path": "components/ui/card.tsx", "type": "registry:ui" }]
     },
     {
       "name": "input",
       "type": "registry:ui",
       "title": "Input",
-      "description": "Input with thick border, shadow on focus.",
+      "description": "Input with 2px contours, soft corners, and a subtle shadow.",
       "files": [{ "path": "components/ui/input.tsx", "type": "registry:ui" }]
     },
     {
@@ -34,14 +34,14 @@
       "name": "badge",
       "type": "registry:ui",
       "title": "Badge",
-      "description": "Badge with thick border, uppercase.",
+      "description": "Compact badge with soft corners and an outlined variant.",
       "files": [{ "path": "components/ui/badge.tsx", "type": "registry:ui" }]
     },
     {
       "name": "dialog",
       "type": "registry:ui",
       "title": "Dialog",
-      "description": "Modal dialog with brutalist shadow.",
+      "description": "Modal dialog with soft corners and a translucent shadow.",
       "files": [{ "path": "components/ui/dialog.tsx", "type": "registry:ui" }]
     },
     {
@@ -67,21 +67,21 @@
       "name": "avatar",
       "type": "registry:ui",
       "title": "Avatar",
-      "description": "Avatar with thick border.",
+      "description": "Borderless circular avatar.",
       "files": [{ "path": "components/ui/avatar.tsx", "type": "registry:ui" }]
     },
     {
       "name": "slider",
       "type": "registry:ui",
       "title": "Slider",
-      "description": "Slider with brutalist thumb and track.",
+      "description": "Slider with 2px contours and a circular thumb.",
       "files": [{ "path": "components/ui/slider.tsx", "type": "registry:ui" }]
     },
     {
       "name": "select",
       "type": "registry:ui",
       "title": "Select",
-      "description": "Select dropdown with brutalist styling.",
+      "description": "Select dropdown with soft corners and 2px contours.",
       "files": [{ "path": "components/ui/select.tsx", "type": "registry:ui" }]
     },
     {
@@ -105,23 +105,23 @@
       "name": "account-menu",
       "type": "registry:ui",
       "title": "Account Menu",
-      "description": "Ethereum account pill with ENS resolution.",
+      "description": "Ethereum account menu with soft corners and ENS resolution.",
       "dependencies": ["wagmi", "viem", "@tanstack/react-query"],
-      "registryDependencies": ["account-avatar", "avatar"],
+      "registryDependencies": ["account-avatar", "avatar", "button"],
       "files": [{ "path": "components/ui/account-menu.tsx", "type": "registry:ui" }]
     },
     {
       "name": "tabs",
       "type": "registry:ui",
       "title": "Tabs",
-      "description": "Brutalist tabs with bordered panels.",
+      "description": "Tabs with an accent selection and softly shadowed panels.",
       "files": [{ "path": "components/ui/tabs.tsx", "type": "registry:ui" }]
     },
     {
       "name": "sheet",
       "type": "registry:ui",
       "title": "Sheet",
-      "description": "Slide-out panel with brutalist border and shadow.",
+      "description": "Floating slide-out panel with soft corners and a translucent shadow.",
       "registryDependencies": ["button"],
       "files": [{ "path": "components/ui/sheet.tsx", "type": "registry:ui" }]
     },
@@ -129,7 +129,7 @@
       "name": "sidebar",
       "type": "registry:ui",
       "title": "Sidebar",
-      "description": "Collapsible sidebar with brutalist styling.",
+      "description": "Collapsible sidebar with softly shadowed floating surfaces.",
       "registryDependencies": ["button", "separator", "sheet"],
       "files": [{ "path": "components/ui/sidebar.tsx", "type": "registry:ui" }]
     },
@@ -137,42 +137,42 @@
       "name": "breadcrumb",
       "type": "registry:ui",
       "title": "Breadcrumb",
-      "description": "Navigation breadcrumbs with bold uppercase text.",
+      "description": "Navigation breadcrumbs with a bold current page.",
       "files": [{ "path": "components/ui/breadcrumb.tsx", "type": "registry:ui" }]
     },
     {
       "name": "checkbox",
       "type": "registry:ui",
       "title": "Checkbox",
-      "description": "Checkbox with thick border and offset shadow.",
+      "description": "Checkbox with clean 2px contours.",
       "files": [{ "path": "components/ui/checkbox.tsx", "type": "registry:ui" }]
     },
     {
       "name": "separator",
       "type": "registry:ui",
       "title": "Separator",
-      "description": "Thick black divider line.",
+      "description": "Subtle 2px divider line.",
       "files": [{ "path": "components/ui/separator.tsx", "type": "registry:ui" }]
     },
     {
       "name": "collapsible",
       "type": "registry:ui",
       "title": "Collapsible",
-      "description": "Expandable section with brutalist trigger.",
+      "description": "Expandable section with a softly shadowed trigger.",
       "files": [{ "path": "components/ui/collapsible.tsx", "type": "registry:ui" }]
     },
     {
       "name": "tooltip",
       "type": "registry:ui",
       "title": "Tooltip",
-      "description": "Tooltip with brutalist border and shadow.",
+      "description": "Tooltip with 2px contours and a subtle shadow.",
       "files": [{ "path": "components/ui/tooltip.tsx", "type": "registry:ui" }]
     },
     {
       "name": "code-block",
       "type": "registry:ui",
       "title": "Code Block",
-      "description": "Code display with brutalist border and copy button.",
+      "description": "Softly shadowed code display with a copy button.",
       "registryDependencies": ["button"],
       "files": [{ "path": "components/ui/code-block.tsx", "type": "registry:ui" }]
     },
@@ -180,49 +180,49 @@
       "name": "typography",
       "type": "registry:ui",
       "title": "Typography",
-      "description": "Heading and prose components with brutalist styling.",
+      "description": "Playful heading and prose components.",
       "files": [{ "path": "components/ui/typography.tsx", "type": "registry:ui" }]
     },
     {
       "name": "popover",
       "type": "registry:ui",
       "title": "Popover",
-      "description": "Popover with brutalist border and shadow.",
+      "description": "Popover with soft corners, 2px contours, and a subtle shadow.",
       "files": [{ "path": "components/ui/popover.tsx", "type": "registry:ui" }]
     },
     {
       "name": "switch",
       "type": "registry:ui",
       "title": "Switch",
-      "description": "Toggle switch with thick border and offset shadow.",
+      "description": "Toggle switch with 2px contours and an accent checked state.",
       "files": [{ "path": "components/ui/switch.tsx", "type": "registry:ui" }]
     },
     {
       "name": "radio-group",
       "type": "registry:ui",
       "title": "Radio Group",
-      "description": "Radio buttons with brutalist styling.",
+      "description": "Radio buttons with clean 2px contours.",
       "files": [{ "path": "components/ui/radio-group.tsx", "type": "registry:ui" }]
     },
     {
       "name": "progress",
       "type": "registry:ui",
       "title": "Progress",
-      "description": "Progress bar with thick border and offset shadow.",
+      "description": "Progress bar with a subtle track and accent fill.",
       "files": [{ "path": "components/ui/progress.tsx", "type": "registry:ui" }]
     },
     {
       "name": "textarea",
       "type": "registry:ui",
       "title": "Textarea",
-      "description": "Multi-line input with brutalist border and shadow.",
+      "description": "Multi-line input with 2px contours and a subtle shadow.",
       "files": [{ "path": "components/ui/textarea.tsx", "type": "registry:ui" }]
     },
     {
       "name": "carousel",
       "type": "registry:ui",
       "title": "Carousel",
-      "description": "Embla-powered carousel with brutalist nav buttons.",
+      "description": "Embla-powered carousel with tactile navigation buttons.",
       "dependencies": ["embla-carousel-react"],
       "registryDependencies": ["button"],
       "files": [{ "path": "components/ui/carousel.tsx", "type": "registry:ui" }]

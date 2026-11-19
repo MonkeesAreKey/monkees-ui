@@ -14,7 +14,7 @@ function TabsList({ className, ...props }: TabsPrimitive.List.Props) {
     <TabsPrimitive.List
       data-slot="tabs-list"
       className={cn(
-        "inline-flex items-center gap-1 rounded-lg border-2 border-black bg-muted p-1 shadow-[4px_4px_0_0_#000]",
+        "inline-flex max-w-full flex-wrap items-center gap-1 rounded-lg bg-background p-1",
         className
       )}
       {...props}
@@ -27,10 +27,10 @@ function TabsTrigger({ className, ...props }: TabsPrimitive.Tab.Props) {
     <TabsPrimitive.Tab
       data-slot="tabs-trigger"
       className={cn(
-        "inline-flex cursor-pointer items-center justify-center rounded-md px-3 py-1.5 text-sm font-bold uppercase tracking-wide outline-none transition-colors select-none",
+        "inline-flex cursor-pointer items-center justify-center rounded-lg px-3 py-1.5 text-sm font-bold outline-none select-none",
         "text-muted-foreground hover:text-foreground",
         "focus-visible:ring-3 focus-visible:ring-ring/50",
-        "data-selected:bg-background data-selected:text-foreground data-selected:border-2 data-selected:border-black data-selected:shadow-[2px_2px_0_0_#000]",
+        "data-selected:bg-accent data-selected:text-accent-foreground",
         "disabled:pointer-events-none disabled:opacity-50",
         className
       )}
@@ -44,7 +44,7 @@ function TabsContent({ className, ...props }: TabsPrimitive.Panel.Props) {
     <TabsPrimitive.Panel
       data-slot="tabs-content"
       className={cn(
-        "mt-2 rounded-lg border-2 border-black bg-background p-4 shadow-[4px_4px_0_0_#000] outline-none focus-visible:ring-3 focus-visible:ring-ring/50",
+        "mt-3 rounded-lg bg-background p-4 shadow-[0_3px_0_#00000014,0_8px_18px_#00000008] outline-none focus-visible:ring-3 focus-visible:ring-ring/50",
         className
       )}
       {...props}

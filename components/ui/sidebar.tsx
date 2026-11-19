@@ -200,7 +200,7 @@ function Sidebar({
         <div
           data-sidebar="sidebar"
           className={cn(
-            "flex h-full w-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border-2 group-data-[variant=floating]:border-black group-data-[variant=floating]:shadow-[4px_4px_0_0_#000]"
+            "flex h-full w-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:shadow-[0_3px_0_#00000014,0_8px_18px_#00000008]"
           )}
         >
           {children}
@@ -271,7 +271,7 @@ function SidebarInset({
       data-slot="sidebar-inset"
       className={cn(
         "relative flex w-full flex-1 flex-col bg-background",
-        "peer-data-[variant=inset]:min-h-[calc(100svh-theme(spacing.4))] md:peer-data-[variant=inset]:m-2 md:peer-data-[state=collapsed]:peer-data-[variant=inset]:ml-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-[4px_4px_0_0_#000] md:peer-data-[variant=inset]:border-2 md:peer-data-[variant=inset]:border-black",
+        "peer-data-[variant=inset]:min-h-[calc(100svh-theme(spacing.4))] md:peer-data-[variant=inset]:m-2 md:peer-data-[state=collapsed]:peer-data-[variant=inset]:ml-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-lg md:peer-data-[variant=inset]:shadow-[0_3px_0_#00000014,0_8px_18px_#00000008]",
         className
       )}
       {...props}
@@ -497,7 +497,7 @@ function SidebarMenuBadge({
       data-slot="sidebar-menu-badge"
       data-sidebar="menu-badge"
       className={cn(
-        "pointer-events-none absolute right-1 flex h-5 min-w-5 select-none items-center justify-center rounded-md border-2 border-black bg-primary px-1 text-xs font-bold text-primary-foreground shadow-[2px_2px_0_0_#000]",
+        "pointer-events-none absolute right-1 flex h-5 min-w-5 select-none items-center justify-center rounded-[8px] bg-primary px-1 text-xs font-bold text-primary-foreground",
         "peer-hover/menu-button:text-sidebar-accent-foreground peer-data-active/menu-button:text-sidebar-accent-foreground",
         "group-data-[collapsible=icon]:hidden",
         className

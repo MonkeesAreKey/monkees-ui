@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants as buttonStyles } from "@/components/ui/button";
 import {
   Card,
   CardHeader,
@@ -146,7 +146,7 @@ function CollapsibleDemo() {
   return (
     <Collapsible open={open} onOpenChange={setOpen}>
       <div className="flex items-center justify-between">
-        <h3 className="text-sm font-bold uppercase tracking-wide">Recent activity</h3>
+        <h3 className="text-sm font-bold">Recent activity</h3>
         <CollapsibleTrigger className="border-0 bg-transparent px-2 py-1 text-xs shadow-none hover:bg-muted hover:shadow-none hover:translate-x-0 hover:translate-y-0 active:translate-x-0 active:translate-y-0">
           {open ? "Show less" : "Show more"}{" "}
           <ChevronDownIcon
@@ -209,7 +209,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   return (
     <section id={slugify(title)} className="scroll-mt-28 space-y-4">
       <Separator />
-      <h2 className="text-xl font-bold uppercase tracking-wide">{title}</h2>
+      <h2 className="text-lg font-bold">{title}</h2>
       {children}
     </section>
   );
@@ -264,7 +264,7 @@ const navGroups = [
 
 function HomeNavbar() {
   return (
-    <nav className="fixed left-0 right-0 top-0 z-[100] border-b-[3px] border-black bg-accent/95 py-3 shadow-[0_4px_0_0_rgba(0,0,0,1)] backdrop-blur-sm">
+    <nav className="fixed left-0 right-0 top-0 z-40 bg-accent/95 py-3 shadow-[0_3px_0_#00000014,0_8px_18px_#00000008] backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4">
         <a href="#top" aria-label="Monkees UI home" className="block no-underline">
           <Image
@@ -282,7 +282,7 @@ function HomeNavbar() {
           target="_blank"
           rel="noreferrer"
           aria-label="View Monkees UI on GitHub"
-          className="inline-flex size-10 items-center justify-center rounded-lg border-2 border-black bg-background text-foreground shadow-[3px_3px_0_0_#000] transition-all hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[4px_4px_0_0_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+          className={buttonStyles({ variant: "outline", size: "icon" })}
         >
           <svg
             className="size-5"
@@ -307,7 +307,7 @@ export default function Home() {
         <nav className="space-y-5">
           {navGroups.map((group) => (
             <div key={group.label} className="space-y-1">
-              <h3 className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
+              <h3 className="text-xs font-bold text-muted-foreground">
                 {group.label}
               </h3>
               <ul className="space-y-0.5">
@@ -326,16 +326,16 @@ export default function Home() {
           ))}
         </nav>
       </aside>
-      <main className="mx-auto min-w-0 max-w-5xl flex-1 px-6 py-12 space-y-12">
+      <main className="mx-auto min-w-0 max-w-5xl flex-1 px-1 py-12 space-y-12 sm:px-6">
         <Toaster />
         <header id="top" className="space-y-6 scroll-mt-28">
           <div className="space-y-2">
-            <h1 className="text-4xl font-black uppercase tracking-tight">Monkees UI</h1>
+            <h1 className="text-4xl font-normal">Monkees UI</h1>
             <p className="text-muted-foreground">UI components styled for the Monkees.</p>
           </div>
-          <div className="space-y-3 rounded-xl border-2 border-black bg-card p-4 shadow-[4px_4px_0_0_#000]">
+          <div className="space-y-3 rounded-lg bg-card p-4 shadow-[0_3px_0_#00000014,0_8px_18px_#00000008]">
             <div className="space-y-1">
-              <h2 className="text-xl font-bold uppercase tracking-wide">Install a component</h2>
+              <h2 className="text-lg font-bold">Install a component</h2>
               <p className="text-sm text-muted-foreground">
                 Use the shadcn CLI to pull components directly from the Monkees UI registry.
                 Components install into your app and keep using your configured aliases.
@@ -352,15 +352,15 @@ export default function Home() {
             </CodeBlock>
             <div className="grid gap-3 text-sm md:grid-cols-3">
               <div className="rounded-lg border-2 border-black bg-background p-3">
-                <span className="font-bold uppercase tracking-wide">1. Choose</span>
+                <span className="font-bold">1. Choose</span>
                 <p className="mt-1 text-muted-foreground">Pick a component from the sidebar or examples below.</p>
               </div>
               <div className="rounded-lg border-2 border-black bg-background p-3">
-                <span className="font-bold uppercase tracking-wide">2. Install</span>
+                <span className="font-bold">2. Install</span>
                 <p className="mt-1 text-muted-foreground">Run the command and let shadcn add the files to your project.</p>
               </div>
               <div className="rounded-lg border-2 border-black bg-background p-3">
-                <span className="font-bold uppercase tracking-wide">3. Import</span>
+                <span className="font-bold">3. Import</span>
                 <p className="mt-1 text-muted-foreground">Use components from your local <TypographyInlineCode>@/components/ui</TypographyInlineCode> path.</p>
               </div>
             </div>
@@ -754,13 +754,13 @@ export default function Home() {
                   },
                 ].map((monkee) => (
                   <CarouselItem key={monkee.id} className="basis-1/3">
-                    <div className="overflow-hidden rounded-lg border-2 border-black shadow-[4px_4px_0_0_#000]">
+                    <div className="overflow-hidden rounded-lg shadow-[0_3px_0_#00000014,0_8px_18px_#00000008]">
                       <img
                         src={monkee.img}
                         alt={`Monkees #${monkee.id}`}
                         className="aspect-square w-full object-cover"
                       />
-                      <div className="border-t-2 border-black bg-background px-3 py-2 text-center text-sm font-bold uppercase tracking-wide">
+                      <div className="border-t-2 border-black/10 bg-background px-3 py-2 text-center text-sm font-bold">
                         Monkees #{monkee.id}
                       </div>
                     </div>
@@ -851,7 +851,12 @@ export default function Home() {
         <Section title="Toast (Sonner)">
           <div className="flex flex-wrap gap-3">
             <Button onClick={() => toast("Monkee minted!")}>Default</Button>
-            <Button variant="accent" onClick={() => toast.success("Tx confirmed")}>
+            <Button
+              variant="accent"
+              onClick={() => toast.success("Tx confirmed", {
+                description: "Monkees #733 added to your wallet.",
+              })}
+            >
               Success
             </Button>
             <Button variant="destructive" onClick={() => toast.error("Tx reverted")}>
@@ -864,19 +869,19 @@ export default function Home() {
           <TooltipProvider>
             <div className="flex gap-4">
               <Tooltip>
-                <TooltipTrigger className="inline-flex size-8 items-center justify-center rounded-lg border-2 border-black bg-background shadow-[4px_4px_0_0_#000] transition-[transform,box-shadow] duration-150 hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[5px_5px_0_0_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">
+                <TooltipTrigger render={<Button size="icon" aria-label="Favorite" />}>
                   <HeartIcon className="size-4" />
                 </TooltipTrigger>
                 <TooltipContent>Favorite</TooltipContent>
               </Tooltip>
               <Tooltip>
-                <TooltipTrigger className="inline-flex size-8 items-center justify-center rounded-lg border-2 border-black bg-background shadow-[4px_4px_0_0_#000] transition-[transform,box-shadow] duration-150 hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[5px_5px_0_0_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">
+                <TooltipTrigger render={<Button size="icon" aria-label="Wishlist" />}>
                   <StarIcon className="size-4" />
                 </TooltipTrigger>
                 <TooltipContent>Wishlist</TooltipContent>
               </Tooltip>
               <Tooltip>
-                <TooltipTrigger className="inline-flex size-8 items-center justify-center rounded-lg border-2 border-black bg-background shadow-[4px_4px_0_0_#000] transition-[transform,box-shadow] duration-150 hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[5px_5px_0_0_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">
+                <TooltipTrigger render={<Button size="icon" aria-label="Quick buy" />}>
                   <ZapIcon className="size-4" />
                 </TooltipTrigger>
                 <TooltipContent side="bottom">Quick buy</TooltipContent>
@@ -890,7 +895,7 @@ export default function Home() {
             <PopoverTrigger render={<Button variant="outline">Token info</Button>} />
             <PopoverContent>
               <div className="space-y-2">
-                <h4 className="font-bold uppercase tracking-wide">Monkees #733</h4>
+                <h4 className="font-bold">Monkees #733</h4>
                 <div className="grid grid-cols-2 gap-2 text-sm">
                   <span className="text-muted-foreground">Floor</span>
                   <span className="font-bold">0.015 ETH</span>

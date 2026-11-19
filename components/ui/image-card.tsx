@@ -15,9 +15,7 @@ function ImageCard({
     <div
       data-slot="image-card"
       className={cn(
-        "group/image-card overflow-hidden rounded-lg border-2 border-black bg-card shadow-[4px_4px_0_0_#000] transition-[transform,box-shadow] duration-150",
-        "hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[5px_5px_0_0_#000]",
-        "active:translate-x-[2px] active:translate-y-[2px] active:shadow-none",
+        "group/image-card overflow-hidden rounded-lg border border-black/15 bg-card shadow-[0_3px_0_#00000014,0_8px_18px_#00000008]",
         className
       )}
       {...props}
@@ -75,7 +73,7 @@ function ImageCardTitle({
   return (
     <h3
       data-slot="image-card-title"
-      className={cn("text-sm font-bold uppercase tracking-wide", className)}
+      className={cn("font-sans text-base font-bold", className)}
       {...props}
     />
   )
@@ -116,7 +114,7 @@ function ImageCardFooter({
     <div
       data-slot="image-card-footer"
       className={cn(
-        "border-t-2 border-black px-3 py-2 text-xs text-muted-foreground",
+        "border-t-2 border-black/10 bg-muted/30 px-3 py-2 text-xs text-muted-foreground",
         className
       )}
       {...props}

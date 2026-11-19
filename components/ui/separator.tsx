@@ -13,7 +13,7 @@ function Separator({
     <SeparatorPrimitive
       data-slot="separator"
       className={cn(
-        "shrink-0 bg-black data-horizontal:h-[2px] data-horizontal:w-full data-vertical:h-full data-vertical:w-[2px]",
+        "shrink-0 bg-black/20 data-horizontal:h-[2px] data-horizontal:w-full data-vertical:h-full data-vertical:w-[2px]",
         className
       )}
       {...props}

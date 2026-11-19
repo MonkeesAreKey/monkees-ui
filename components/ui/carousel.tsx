@@ -153,7 +153,7 @@ function CarouselItem({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 const carouselNavClass =
-  "inline-flex size-8 cursor-pointer items-center justify-center rounded-lg border-2 border-black bg-background shadow-[4px_4px_0_0_#000] outline-none transition-shadow duration-150 hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50"
+  "inline-flex size-10 cursor-pointer items-center justify-center rounded-lg border-2 border-black bg-background text-accent shadow-[2px_3px_0_#0002] outline-none transition-shadow duration-150 motion-reduce:transition-none hover:bg-accent hover:text-accent-foreground hover:shadow-none focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
 
 function CarouselPrevious({
   className,

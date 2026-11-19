@@ -2,11 +2,11 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "input",
   "title": "Input",
-  "description": "Input with thick border, shadow on focus.",
+  "description": "Input with 2px contours, soft corners, and a subtle shadow.",
   "files": [
     {
       "path": "components/ui/input.tsx",
-      "content": "import * as React from \"react\"\nimport { Input as InputPrimitive } from \"@base-ui/react/input\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Input({ className, type, ...props }: React.ComponentProps<\"input\">) {\n  return (\n    <InputPrimitive\n      type={type}\n      data-slot=\"input\"\n      className={cn(\n        \"h-10 w-full min-w-0 rounded-lg border-2 border-black bg-background px-3 py-1 text-base font-medium shadow-[4px_4px_0_0_#000] outline-none transition-[transform,box-shadow] duration-150 file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground\",\n        \"hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[5px_5px_0_0_#000]\",\n        \"focus-visible:-translate-x-[1px] focus-visible:-translate-y-[1px] focus-visible:shadow-[5px_5px_0_0_#000] focus-visible:ring-3 focus-visible:ring-ring/50\",\n        \"disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50\",\n        \"aria-invalid:border-destructive aria-invalid:ring-destructive/20 md:text-sm\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Input }\n",
+      "content": "import * as React from \"react\"\nimport { Input as InputPrimitive } from \"@base-ui/react/input\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Input({ className, type, ...props }: React.ComponentProps<\"input\">) {\n  return (\n    <InputPrimitive\n      type={type}\n      data-slot=\"input\"\n      className={cn(\n        \"h-11 w-full min-w-0 rounded-lg border-2 border-black bg-background px-3 py-1 text-base font-normal shadow-[2px_3px_0_#00000014] outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground\",\n        \"focus-visible:outline-3 focus-visible:outline-solid focus-visible:outline-offset-3 focus-visible:outline-accent\",\n        \"disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none\",\n        \"aria-invalid:border-destructive aria-invalid:outline-2 aria-invalid:outline-solid aria-invalid:outline-destructive md:text-sm\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Input }\n",
       "type": "registry:ui"
     }
   ],

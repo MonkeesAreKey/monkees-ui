@@ -15,7 +15,7 @@ function CodeBlock({
     <div
       data-slot="code-block"
       className={cn(
-        "relative rounded-lg border-2 border-black bg-muted shadow-[4px_4px_0_0_#000]",
+        "relative rounded-lg border border-black/15 bg-background shadow-[0_3px_0_#00000014,0_8px_18px_#00000008]",
         className
       )}
       {...props}
@@ -34,7 +34,7 @@ function CodeBlockHeader({
     <div
       data-slot="code-block-header"
       className={cn(
-        "flex items-center justify-between border-b-2 border-black px-4 py-2 text-xs font-bold uppercase tracking-wide text-muted-foreground",
+        "flex items-center justify-between border-b-2 border-black/10 px-4 py-2 text-xs text-muted-foreground",
         className
       )}
       {...props}

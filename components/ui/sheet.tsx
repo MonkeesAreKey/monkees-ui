@@ -38,16 +38,16 @@ function SheetOverlay({ className, ...props }: DialogPrimitive.Backdrop.Props) {
 }
 
 const sheetContentVariants = cva(
-  "fixed z-50 flex flex-col gap-4 border-2 border-black bg-background p-6 shadow-[8px_8px_0_0_#000] outline-none duration-200 data-open:animate-in data-closed:animate-out",
+  "fixed z-50 flex flex-col gap-4 bg-background p-6 shadow-[0_8px_0_#0002,0_20px_60px_#0003] outline-none duration-200 data-open:animate-in data-closed:animate-out",
   {
     variants: {
       side: {
-        top: "inset-x-0 top-0 rounded-b-xl border-t-0 data-open:slide-in-from-top data-closed:slide-out-to-top",
+        top: "inset-x-4 top-4 rounded-lg data-open:slide-in-from-top data-closed:slide-out-to-top",
         bottom:
-          "inset-x-0 bottom-0 rounded-t-xl border-b-0 data-open:slide-in-from-bottom data-closed:slide-out-to-bottom",
-        left: "inset-y-0 left-0 w-3/4 rounded-r-xl border-l-0 sm:max-w-sm data-open:slide-in-from-left data-closed:slide-out-to-left",
+          "inset-x-4 bottom-4 rounded-lg data-open:slide-in-from-bottom data-closed:slide-out-to-bottom",
+        left: "inset-y-4 left-4 w-[calc(100%-2rem)] rounded-lg sm:max-w-sm data-open:slide-in-from-left data-closed:slide-out-to-left",
         right:
-          "inset-y-0 right-0 w-3/4 rounded-l-xl border-r-0 sm:max-w-sm data-open:slide-in-from-right data-closed:slide-out-to-right",
+          "inset-y-4 right-4 w-[calc(100%-2rem)] rounded-lg sm:max-w-sm data-open:slide-in-from-right data-closed:slide-out-to-right",
       },
     },
     defaultVariants: {
@@ -123,7 +123,7 @@ function SheetTitle({ className, ...props }: DialogPrimitive.Title.Props) {
     <DialogPrimitive.Title
       data-slot="sheet-title"
       className={cn(
-        "font-heading text-lg leading-none font-bold uppercase tracking-wide",
+        "font-sans text-xl leading-snug font-bold",
         className
       )}
       {...props}

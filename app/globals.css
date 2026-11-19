@@ -73,9 +73,9 @@
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
   --radius: 0.75rem;
-  --shadow-monkee-sm: 2px 2px 0 0 #000;
-  --shadow-monkee: 4px 4px 0 0 #000;
-  --shadow-monkee-lg: 8px 8px 0 0 #000;
+  --shadow-monkee-sm: 2px 3px 0 #0002;
+  --shadow-monkee: 0 3px 0 #00000014, 0 8px 18px #00000008;
+  --shadow-monkee-lg: 0 8px 0 #0002, 0 20px 60px #0003;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -131,13 +131,17 @@
     @apply font-sans;
   }
 
-  h1,
+  h1 {
+    @apply font-heading font-normal;
+    letter-spacing: normal;
+  }
+
   h2,
   h3,
   h4,
   h5,
   h6 {
-    @apply font-heading;
-    letter-spacing: 0.04em;
+    @apply font-sans font-bold;
+    letter-spacing: normal;
   }
 }
