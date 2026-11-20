@@ -11,7 +11,7 @@ const buttonVariants = cva(
         default:
           "bg-primary text-primary-foreground shadow-[inset_0_-4px_0_#0003,0_4px_0_#0003]",
         outline:
-          "bg-background text-foreground shadow-[inset_0_-4px_0_#0003,0_4px_0_#0003] hover:bg-secondary",
+          "bg-background text-foreground shadow-[inset_0_-4px_0_#0003,0_4px_0_#0003] hover:brightness-100",
         secondary:
           "bg-secondary text-secondary-foreground shadow-[inset_0_-4px_0_#0003,0_4px_0_#0003]",
         ghost:
